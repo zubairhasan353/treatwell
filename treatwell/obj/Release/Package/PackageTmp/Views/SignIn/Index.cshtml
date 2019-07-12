@@ -1,0 +1,104 @@
+﻿
+@{
+    ViewBag.Title = "Sign In --- TREATWELL";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+<link rel="font" href="https://fonts.googleapis.com/css?family=Numans">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<link rel="font" href="https://fonts.googleapis.com/css?family=Numans">
+
+<style>
+
+
+    html, body {
+        background-size: cover;
+        background-repeat: no-repeat;
+        height: 100%;
+        font-family: 'Numans', sans-serif;
+        font-size: 17px;
+    }
+
+    .container {
+        height: 77%;
+        align-content: center;
+    }
+
+    
+        
+    
+
+    .social_icon span {
+        font-size: 40px;
+        margin-left: 10px;
+    }
+
+        .social_icon span:hover {
+            color: white;
+            cursor: pointer;
+        }
+
+    a:hover {
+        cursor: pointer
+    }
+</style>
+
+<body>
+    <div class="container">
+        <div class="d-flex justify-content-center">
+            <div class="card">
+                <div class="card-header">
+                    <h3>Sign IN</h3>
+                    <div class="d-flex justify-content-end social_icon">
+
+                        <span style=" color: #365899;"><i _ngcontent-c2="" aria-hidden="true" class="fa fa-facebook fa-faa-vertical ng" ng-reflect-klass="fa fa-facebook" ng-reflect-ng-class="fa-faa-vertical ng "></i></span>
+                        <span style="color: royalblue;"><i _ngcontent-c2="" aria-hidden="true" class="fa fa-twitter fa-faa-vertical ng" ng-reflect-klass="fa fa-twitter" ng-reflect-ng-class="fa-faa-vertical ng "></i></span>
+                        <span style="border:1px solid antiquewhite; color:tomato"><i _ngcontent-c2="" aria-hidden="true" class="fa fa-google fa-faa-vertical ng" ng-reflect-klass="fa fa-google" ng-reflect-ng-class="fa-faa-vertical ng "></i></span>
+                    </div>
+                </div>
+
+
+                <div style="padding-bottom: 0px !important;padding-top: 37px;" class="card-body">
+                    <form>
+                        <div class="input-group form-group">
+                            <div class="input-group-prepend">
+                                <span style="padding-right:17px" class="input-group-text"><i _ngcontent-c2="" aria-hidden="true" class="fa fa-user fa-faa-vertical ng" ng-reflect-klass="fa fa-user" ng-reflect-ng-class="fa-faa-vertical ng "></i></span>
+                            </div>
+                            <input type="text" class="form-control" placeholder="username">
+
+                        </div>
+                        <div class="input-group form-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i _ngcontent-c2="" aria-hidden="true" class="fa fa-key fa-faa-vertical ng" ng-reflect-klass="fa fa-key" ng-reflect-ng-class="fa-faa-vertical ng "></i></span>
+                            </div>
+                            <input type="password" class="form-control" placeholder="password">
+                        </div>
+                        <div class="row align-items-center remember">
+                            <input type="checkbox" style="margin-left:15px"><span style="margin-left:15px"></span>Remember Me
+                        </div>
+                        <div class="form-group">
+                            <input style="margin-top:20px;" type="button" value="Login" class="btn btn-dark btn-lg btn-block float-right">
+                        </div>
+                    </form>
+                </div>
+                <div class="card-footer">
+                    <div class="d-flex justify-content-center links ">
+                        Don't have an account? <a onclick="@("window.location.href='"+ Url.Action("SignUp","SignIn") +"'");" style="margin-left:5px; color:tomato ;">Sign Up</a>
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <a onclick="@("window.location.href='"+ Url.Action("ForgetUrPassword","SignIn") +"'");" style="color:tomato">Forgot your password?</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @{
+        Html.RenderPartial("_Footer");
+    }
+</body>

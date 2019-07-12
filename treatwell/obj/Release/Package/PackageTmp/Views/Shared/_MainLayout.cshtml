@@ -1,0 +1,397 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+
+        a:hover {
+            cursor: pointer;
+        }
+    </style>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <base href="/">
+
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <!-- Polyfill(s) for older browsers -->
+    <script src="~/node_modules/core-js/client/shim.min.js"></script>
+    <script src="~/node_modules/zone.js/dist/zone.js"></script>
+    <script src="~/node_modules/systemjs/dist/system.src.js"></script>
+    <script src="~/CientApp/systemjs.config.js"></script>
+    <script>
+        System.import('/CientApp/main.js').catch(function (err) { console.error(err); });
+    </script>
+</head>
+<body>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+        html, body {
+            font-size: 17px
+        }
+
+        a:hover {
+            cursor: pointer;
+        }
+    </style>
+    <div class="container-fluid" style="padding-top:12px">
+        <div class="row">
+            <div class="col-sm-8">
+                <a href="#">
+                    <img style="margin-left:101px" src="http://www.apex.com.pk/wp-content/uploads/2019/06/treatwell.png" />
+
+                </a>
+
+            </div>
+            <div style=" margin-left:150px" class="col-sm-1.5">
+                <a (click)="business()" class="small " style="color: grey; text-decoration:none;" <a onclick="@("window.location.href='"+ Url.Action("Business","App") +"'");">
+    <strong>LIST YOU BUSINESSES</strong>
+</a>
+            </div>
+            <div class="col-md-1">
+                <a onclick="@("window.location.href='"+ Url.Action("Index","SignIn") +"'");" class="small" style="color: #ff5c39; text-decoration:unset;">
+                    LOG IN
+                </a>
+            </div>
+        </div>
+    </div>
+    <!-- <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+                <nav class="nav " >
+    <a  style="text-decoration: none"href="#" ><ol class="small"style="margin-left:74px; color:grey"><strong>HAIR</strong></ol> </a>
+    <ol class="small" style="color:grey"><strong>HAIR REMOVAL</strong>
+    </ol>
+    <ol class="small" style="color:grey"><strong>MASSAGE</strong></ol>
+    <ol class="small" style="color:grey"><strong>NAILS</strong></ol>
+    <ol class="small" style="color:grey"><strong>FACE</strong></ol>
+    <ol class="small" style="color:grey"><strong>BODY</strong></ol>
+    <ol class="small" style="color:grey"><strong>Spa Days & Breaks</strong></ol>
+    <ol class="small" style="color:grey"><strong>New Salon Discount</strong></ol>
+    <ol class="small" style="color:grey"><strong>The Treatment Files</strong></ol>
+    </nav>
+    </div>
+    </div>
+    </div> -->
+
+    <div style="padding-left: 79px; font-size: 13px" class="container-fluid small">
+        <nav class="navbar navbar-expand-lg navbar-light ">
+            <a class="navbar-brand" href="#"> </a>
+            <button class="navbar-toggler btn btn-outline-primary"
+                    type="button" data-toggle="collapse"
+                    data-target="#navbarTogglerDemo02"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation"
+                    (click)="isCollap = !isCollap"
+                    [attr.aria-expanded]="!isCollap"
+                    aria-controls="navbarTogglerDemo02">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            @{
+                Html.RenderAction("SideMenu", "App");
+            }
+        </nav>
+    </div>
+    <!-- <div style="position: absolute;
+
+            z-index: 11;
+
+            left: 0;
+
+            right: 0;
+
+            margin-top: -16px;
+
+            overflow-y: auto;
+
+            max-height: calc(100vh - 80px);"
+
+            class="container-fluid">
+
+            <div id="collapseExample" [ngbCollapse]="!isCollapsed">
+                    <div class="card">
+                      <div style="background-color: #f2f2f2;" class="card-body">
+                          <div style="margin-left:69px" class="row">
+                              <div style="line-height: 30px;" class="col-sm-3">
+                                  <a (click)="hair()" style="text-decoration:none;color: hsl(0, 0%, 30%);">Haircuts and Hairdressing</a> <br>
+                                  <a (click)="hairA()"style="text-decoration:none;color: hsl(0, 0%, 30%);">Blow Dry</a> <br>
+                                  <a  (click)="hairB()"style="text-decoration:none;color: hsl(0, 0%, 30%);" >Ladies' Hair Colouring & Highlights</a> <br>
+                                  <a  (click)="hair()"style="text-decoration:none;color: hsl(0, 0%, 30%);" >Ladies' Brazilian Blow Dry</a><br>
+                                  <a  (click)="hair()"style="text-decoration:none;color: hsl(0, 0%, 30%);" >Balayage & Ombre</a><br>
+                                  <a  (click)="hair()"style="text-decoration:none;color: hsl(0, 0%, 30%);" >Men's Haircut</a><br>
+                                  <a  (click)="hair()"style="text-decoration:none;color: hsl(0, 0%, 30%);" ><strong> See all hair treatments</strong></a>
+
+                      </div>
+                      <div  style="border: 2px solid #e2e2e2; margin-left: 103px; padding:0px !important; background-color: white "class="col-sm-3">
+                        <a style="text-decoration: none" href="google.com">
+                          <img  class="img-fluid img-responsive" src="assets/image/twell_hair.jpg"/>
+                          <h6  style="text-decoration: none ;color:#666; letter-spacing: 1px; padding:10px">Last minute? Cuts near you</h6>
+                      </a>
+
+                    </div>
+                    <div style=" padding-left: 30px"><span></span></div>
+                    <div  style="border: 2px solid #e2e2e2; padding:0px !important; background-color: white "class="col-sm-3">
+                      <a style="text-decoration: none" href="google.com">
+                        <img  class="img-fluid img-responsive float:right" src="assets/image/twell_hair2.jpg"/>
+                        <h6  style="text-decoration: none ;color:#666; letter-spacing: 1px; padding:10px">Hair treatments : the lowdown</h6>
+                    </a>
+
+                  </div>
+                    </div>
+                    </div>
+                  </div>
+                </div>
+
+
+                <div  class="container-fluid">
+                  <div id="collapseExample" [ngbCollapse]="!isCollapseda">
+                          <div class="card">
+                            <div style="background-color: #f2f2f2;" class="card-body">
+                                <div style="margin-left:69px" class="row">
+                                    <div style="line-height: 30px;" class="col-sm-3">
+                                        <a (click)="hairB()" style="text-decoration:none;color: hsl(0, 0%, 30%);" >Ladies' Waxing</a> <br>
+                                        <a (click)="hairB()" style="text-decoration:none;color: hsl(0, 0%, 30%);">Hollywood Waxing</a> <br>
+                                        <a (click)="hairB()" style="text-decoration:none;color: hsl(0, 0%, 30%);" >Brazilian Waxing</a> <br>
+                                        <a (click)="hairB()" style="text-decoration:none;color: hsl(0, 0%, 30%);" >Facial Threading</a><br>
+                                        <a (click)="hairB()" style="text-decoration:none;color: hsl(0, 0%, 30%);" >Men's Waxing</a><br>
+                                        <a (click)="hairB()" style="text-decoration:none;color: hsl(0, 0%, 30%);" >Laser Hair Removal</a><br>
+                                        <a (click)="hairB()"style="text-decoration:none;color: hsl(0, 0%, 30%);" ><strong> See all hair removal treatments</strong></a>
+
+                            </div>
+                            <div  style="border: 2px solid #e2e2e2; margin-left: 103px; padding:0px !important; background-color: white "class="col-sm-3">
+                              <a style="text-decoration: none" href="google.com">
+                                <img  class="img-fluid img-responsive" src="assets/image/twell_wax.jpg"/>
+                                <h6  style="text-decoration: none ;color:#666; letter-spacing: 1px; padding:10px">Last minute? Cuts near you</h6>
+                            </a>
+
+                          </div>
+                          <div style=" padding-left: 30px"><span></span></div>
+                          <div  style="border: 2px solid #e2e2e2; padding:0px !important; background-color: white "class="col-sm-3">
+                            <a style="text-decoration: none" href="google.com">
+                              <img  class="img-fluid img-responsive float:right" src="assets/image/twell_wax2.jpg"/>
+                              <h6  style="text-decoration: none ;color:#666; letter-spacing: 1px; padding:10px">Hair treatments : the lowdown</h6>
+                          </a>
+
+                        </div>
+                          </div>
+                          </div>
+                        </div>
+                      </div>
+
+    <div  class="container-fluid">
+                  <div id="collapseExample" [ngbCollapse]="!isCollapsedb">
+                          <div class="card">
+                            <div style="background-color: #f2f2f2;" class="card-body">
+                                <div style="margin-left:69px" class="row">
+                                    <div style="line-height: 30px;" class="col-sm-3">
+                                        <a (click)="hairB()" style="text-decoration:none;color: hsl(0, 0%, 30%);" >Deep Tissue Massage</a> <br>
+                                        <a (click)="hairB()"  style="text-decoration:none;color: hsl(0, 0%, 30%);">Swedish Massage</a> <br>
+                                        <a (click)="hairB()" style="text-decoration:none;color: hsl(0, 0%, 30%);" >Therapeutic Massage</a> <br>
+                                        <a (click)="hairB()" style="text-decoration:none;color: hsl(0, 0%, 30%);" >Thai Massage</a><br>
+                                        <a (click)="hairB()" style="text-decoration:none;color: hsl(0, 0%, 30%);" >Aromatherapy Massage</a><br>
+                                        <a (click)="hairB()" style="text-decoration:none;color: hsl(0, 0%, 30%);" >Hot Stone Massage</a><br>
+                                        <a (click)="hairB()" style="text-decoration:none;color: hsl(0, 0%, 30%);" ><strong> See all massage treatments</strong></a>
+
+                            </div>
+                            <div  style="border: 2px solid #e2e2e2; margin-left: 103px; padding:0px !important; background-color: white "class="col-sm-3">
+                              <a style="text-decoration: none" href="google.com">
+                                <img  class="img-fluid img-responsive" src="assets/image/twell_mass.jpg"/>
+                                <h6  style="text-decoration: none ;color:#666; letter-spacing: 1px; padding:10px">I need a massage, quick!</h6>
+                            </a>
+
+                          </div>
+                          <div style=" padding-left: 30px"><span></span></div>
+                          <div  style="border: 2px solid #e2e2e2; padding:0px !important; background-color: white "class="col-sm-3">
+                            <a style="text-decoration: none" href="google.com">
+                              <img  class="img-fluid img-responsive float:right" src="assets/image/twell_mass2.jpg"/>
+                              <h6  style="text-decoration: none ;color:#666; letter-spacing: 1px; padding:10px">The what's waht</h6>
+                          </a>
+
+                        </div>
+                          </div>
+                          </div>
+                        </div>
+                      </div> -->
+    <!-- <div  class="container-fluid">
+            <div id="collapseExample" [ngbCollapse]="!isCollapsedc ">
+                    <div class="card">
+                      <div style="background-color: #f2f2f2;" class="card-body">
+                          <div style="margin-left:69px" class="row">
+                              <div style="line-height: 30px;" class="col-sm-3">
+                                  <a (click)="hairB()" style="text-decoration:none;color: hsl(0, 0%, 30%);" >Pedicure</a> <br>
+                                  <a (click)="hairB()" style="text-decoration:none;color: hsl(0, 0%, 30%);">Manicure</a> <br>
+                                  <a (click)="hairB()" style="text-decoration:none;color: hsl(0, 0%, 30%);" >Nail or Gel Polish Removal</a> <br>
+                                  <a (click)="hairB()" style="text-decoration:none;color: hsl(0, 0%, 30%);" >Gel Nails Manicure</a><br>
+                                  <a (click)="hairB()" style="text-decoration:none;color: hsl(0, 0%, 30%);" >Gel Nails Pedicure</a><br>
+                                  <a (click)="hairB()" style="text-decoration:none;color: hsl(0, 0%, 30%);" >Acrylic, Hard Gel & Nail Extensions</a><br>
+                                  <a (click)="hairB()" style="text-decoration:none;color: hsl(0, 0%, 30%);" ><strong> See all nail treatments</strong></a>
+
+                      </div>
+                      <div  style="border: 2px solid #e2e2e2; margin-left: 103px; padding:0px !important; background-color: white "class="col-sm-3">
+                        <a style="text-decoration: none" href="google.com">
+                          <img  class="img-fluid img-responsive" src="assets/image/twell_nail.jpg"/>
+                          <h6  style="text-decoration: none ;color:#666; letter-spacing: 1px; padding:10px">I need a massage, quick!</h6>
+                      </a>
+
+                    </div>
+                    <div style=" padding-left: 30px"><span></span></div>
+                    <div  style="border: 2px solid #e2e2e2; padding:0px !important; background-color: white "class="col-sm-3">
+                      <a style="text-decoration: none" href="google.com">
+                        <img  class="img-fluid img-responsive float:right" src="assets/image/twell_nail2.jpg"/>
+                        <h6  style="text-decoration: none ;color:#666; letter-spacing: 1px; padding:10px">The what's waht</h6>
+                    </a>
+
+                  </div>
+                    </div>
+                    </div>
+                  </div>
+                </div>
+                <div  class="container-fluid">
+                    <div id="collapseExample" [ngbCollapse]="!isCollapsedd ">
+                            <div class="card">
+                              <div style="background-color: #f2f2f2;" class="card-body">
+                                  <div style="margin-left:69px" class="row">
+                                      <div style="line-height: 30px;" class="col-sm-3">
+                                          <a (click)="hairB()" style="text-decoration:none;color: hsl(0, 0%, 30%);" >Classic Facials</a> <br>
+                                          <a (click)="hairB()"style="text-decoration:none;color: hsl(0, 0%, 30%);">Eyelash Extensions</a> <br>
+                                          <a (click)="hairB()"style="text-decoration:none;color: hsl(0, 0%, 30%);" >Eyebrow and Eyelash Tinting </a> <br>
+                                          <a (click)="hairB()"style="text-decoration:none;color: hsl(0, 0%, 30%);" >Eyebrow Threading</a><br>
+                                          <a (click)="hairB()"style="text-decoration:none;color: hsl(0, 0%, 30%);" >Eyebrow Waxing</a><br>
+                                          <a (click)="hairB()"style="text-decoration:none;color: hsl(0, 0%, 30%);" >Definition Brows</a><br>
+                                          <a (click)="hairB()"style="text-decoration:none;color: hsl(0, 0%, 30%);" ><strong> See all face treatments</strong></a>
+
+                              </div>
+                              <div  style="border: 2px solid #e2e2e2; margin-left: 103px; padding:0px !important; background-color: white "class="col-sm-3">
+                                <a style="text-decoration: none" href="google.com">
+                                  <img  class="img-fluid img-responsive" src="assets/image/twell_face.jpg"/>
+                                  <h6  style="text-decoration: none ;color:#666; letter-spacing: 1px; padding:10px">I need a massage, quick!</h6>
+                              </a>
+
+                            </div>
+                            <div style=" padding-left: 30px"><span></span></div>
+                            <div  style="border: 2px solid #e2e2e2; padding:0px !important; background-color: white "class="col-sm-3">
+                              <a style="text-decoration: none" href="google.com">
+                                <img  class="img-fluid img-responsive float:right" src="assets/image/twell_face2.jpg"/>
+                                <h6  style="text-decoration: none ;color:#666; letter-spacing: 1px; padding:10px">The what's waht</h6>
+                            </a>
+
+                          </div>
+                            </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div  class="container-fluid">
+                            <div id="collapseExample" [ngbCollapse]="!isCollapsede ">
+                                    <div class="card">
+                                      <div style="background-color: #f2f2f2;" class="card-body">
+                                          <div style="margin-left:69px" class="row">
+                                              <div style="line-height: 30px;" class="col-sm-3">
+                                                  <a (click)="hairB()" style="text-decoration:none;color: hsl(0, 0%, 30%);" >Spray Tanning and Sunless Tanning</a> <br>
+                                                  <a (click)="hairB()"style="text-decoration:none;color: hsl(0, 0%, 30%);">Body Exfoliation Treatments</a> <br>
+                                                  <a (click)="hairB()"style="text-decoration:none;color: hsl(0, 0%, 30%);" >Body Wraps</a> <br>
+                                                  <a (click)="hairB()"style="text-decoration:none;color: hsl(0, 0%, 30%);" >Colonic Hydrotherapy</a><br>
+                                                  <a (click)="hairB()"style="text-decoration:none;color: hsl(0, 0%, 30%);" >Cryolipolysis</a><br>
+                                                  <a (click)="hairB()"style="text-decoration:none;color: hsl(0, 0%, 30%);" >Cellulite Treatments</a><br>
+                                                  <a (click)="hairB()"style="text-decoration:none;color: hsl(0, 0%, 30%);" ><strong> See all body treatments</strong></a>
+
+                                      </div>
+                                      <div  style="border: 2px solid #e2e2e2; margin-left: 103px; padding:0px !important; background-color: white "class="col-sm-3">
+                                        <a style="text-decoration: none" href="google.com">
+                                          <img  class="img-fluid img-responsive" src="assets/image/twell_body.jpg"/>
+                                          <h6  style="text-decoration: none ;color:#666; letter-spacing: 1px; padding:10px">I need a massage, quick!</h6>
+                                      </a>
+
+                                    </div>
+                                    <div style=" padding-left: 30px"><span></span></div>
+                                    <div  style="border: 2px solid #e2e2e2; padding:0px !important; background-color: white "class="col-sm-3">
+                                      <a style="text-decoration: none" href="google.com">
+                                        <img  class="img-fluid img-responsive float:right" src="assets/image/twell_body2.jpg"/>
+                                        <h6  style="text-decoration: none ;color:#666; letter-spacing: 1px; padding:10px">The what's waht</h6>
+                                    </a>
+
+                                  </div>
+                                    </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div  class="container-fluid">
+                                    <div id="collapseExample" [ngbCollapse]="!isCollapsedf ">
+                                            <div class="card">
+                                              <div style="background-color: #f2f2f2;" class="card-body">
+                                                  <div style="margin-left:69px" class="row">
+                                                      <div style="line-height: 30px;" class="col-sm-3">
+                                                          <a (click)="hairB()"style="text-decoration:none;color: hsl(0, 0%, 30%);" >See all Spa Days</a> <br>
+                                                          <a (click)="hairB()"style="text-decoration:none;color: hsl(0, 0%, 30%);">See all Spa Breaks</a> <br>
+                                                          <a (click)="hairB()"style="text-decoration:none;color: hsl(0, 0%, 30%);" >Spa Days Under £50</a> <br>
+                                                          <a (click)="hairB()"style="text-decoration:none;color: hsl(0, 0%, 30%);" >5 Star Spa Hotels</a><br>
+                                                          <a (click)="hairB()"style="text-decoration:none;color: hsl(0, 0%, 30%);" >Last-minute spa offers</a><br>
+                                                          <a (click)="hairB()"style="text-decoration:none;color: hsl(0, 0%, 30%);" >Up to 70% off Spa Days</a><br>
+                                                          <a (click)="hairB()"style="text-decoration:none;color: hsl(0, 0%, 30%);" ><strong> Up to 60% off Spa Breaks</strong></a>
+
+                                              </div>
+                                              <div  style="border: 2px solid #e2e2e2; margin-left: 103px; padding:0px !important; background-color: white "class="col-sm-3">
+                                                <a style="text-decoration: none" href="google.com">
+                                                  <img  class="img-fluid img-responsive" src="assets/image/twell_spa.jpg"/>
+                                                  <h6  style="text-decoration: none ;color:#666; letter-spacing: 1px; padding:10px">I need a massage, quick!</h6>
+                                              </a>
+
+                                            </div>
+                                            <div style=" padding-left: 30px"><span></span></div>
+                                            <div  style="border: 2px solid #e2e2e2; padding:0px !important; background-color: white "class="col-sm-3">
+                                              <a style="text-decoration: none" href="google.com">
+                                                <img  class="img-fluid img-responsive float:right" src="assets/image/twell_spa2.jpg"/>
+                                                <h6  style="text-decoration: none ;color:#666; letter-spacing: 1px; padding:10px">The what's waht</h6>
+                                            </a>
+
+                                          </div>
+                                            </div>
+                                            </div>
+                                          </div>
+                                        </div>   -->
+    <!-- <script>
+
+    this.isCollap=false
+    this.isCollapsed=false
+    this.isCollapseda=false
+    this.isCollapsedb=false
+    this.isCollapsedc=false
+    this.isCollapsedd=false
+    this.isCollapsede=false
+    this.isCollapsedf=false
+
+      showCollapsed(){
+            if(this.isCollapsed==false)
+            {
+             this.isCollap = false;
+             this.isCollapsed = true;
+             this.isCollapseda = false;
+             this.isCollapsedb = false;
+             this.isCollapsedc = false;
+             this.isCollapsedd = false;
+             this.isCollapsede = false;
+             this.isCollapsedf = false;
+
+
+            }
+            else{
+            this.isCollapsed = false;
+            }
+          }
+    </script> -->
+
+
+
+
+
+
+    @RenderBody()
+</body>
+</html>

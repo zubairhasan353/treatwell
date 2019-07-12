@@ -1,0 +1,420 @@
+﻿@model treatwell.ViewModels.InnerPageViewModel
+@{
+    ViewBag.Title = "TREATWELL";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+<link rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Numans">
+<link rel="stylesheet" href="https://unpkg.com/ngx-bootstrap/datepicker/bs-datepicker.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Numans">
+
+<style>
+
+    html, body {
+        font-size: 17px
+    }
+
+    .checked {
+        color: #cb6;
+    }
+
+
+    body {
+        padding: 50px;
+    }
+
+    label {
+        position: relative;
+        cursor: pointer;
+        color: #666;
+    }
+
+    input[type="checkbox"], input[type="radio"] {
+        position: absolute;
+        right: 9000px;
+    }
+
+        /*Check box*/
+        input[type="checkbox"] + .label-text:before {
+            content: "\f096";
+            font-family: "FontAwesome";
+            font-style: normal;
+            font-weight: normal;
+            font-variant: normal;
+            text-transform: none;
+            line-height: 1;
+            -webkit-font-smoothing: antialiased;
+            width: 1em;
+            display: inline-block;
+            margin-right: 5px;
+        }
+
+        input[type="checkbox"]:checked + .label-text:before {
+            content: "\f14a";
+            color: #ff5c39;
+            animation: effect 250ms ease-in;
+        }
+
+        input[type="checkbox"]:disabled + .label-text {
+            color: #aaa;
+        }
+
+            input[type="checkbox"]:disabled + .label-text:before {
+                content: "\f0c8";
+                color: #ccc;
+            }
+
+        /*Radio box*/
+
+        input[type="radio"] + .label-text:before {
+            content: "\f10c";
+            font-family: "FontAwesome";
+            font-style: normal;
+            font-weight: normal;
+            font-variant: normal;
+            text-transform: none;
+            line-height: 1;
+            -webkit-font-smoothing: antialiased;
+            width: 1em;
+            display: inline-block;
+            margin-right: 5px;
+        }
+
+        input[type="radio"]:checked + .label-text:before {
+            content: "\f192";
+            color: #ff5c39;
+            animation: effect 250ms ease-in;
+        }
+
+        input[type="radio"]:disabled + .label-text {
+            color: #aaa;
+        }
+
+            input[type="radio"]:disabled + .label-text:before {
+                content: "\f111";
+                color: #ccc;
+            }
+
+    /*Radio Toggle*/
+
+    .toggle input[type="radio"] + .label-text:before {
+        content: "\f204";
+        font-family: "FontAwesome";
+        font-style: normal;
+        font-weight: normal;
+        font-variant: normal;
+        text-transform: none;
+        line-height: 1;
+        -webkit-font-smoothing: antialiased;
+        width: 1em;
+        display: inline-block;
+        margin-right: 10px;
+    }
+
+    .toggle input[type="radio"]:checked + .label-text:before {
+        content: "\f205";
+        color: #ff5c39;
+        animation: effect 250ms ease-in;
+    }
+
+    .toggle input[type="radio"]:disabled + .label-text {
+        color: #aaa;
+    }
+
+        .toggle input[type="radio"]:disabled + .label-text:before {
+            content: "\f204";
+            color: #ccc;
+        }
+</style>
+
+<script>
+    var TreatmentCount, CityCount;
+    TreatmentCount = 1;
+    CityCount = @Model.CityCount;
+
+    var arrserviceId = [];
+    var arrCityId = [];
+
+    function checkboxClick(obj, CT, Id)            //T for treatments, c for cities
+    {
+        if ($(obj).is(":checked")) {
+            if (CT == 'T') {
+                TreatmentCount = TreatmentCount + 1;
+            }
+            else if (CT == 'C') {
+                CityCount = CityCount + 1;
+            }
+        }
+        else {
+            if (CT == 'T') {
+                TreatmentCount = TreatmentCount - 1;
+            }
+            else if (CT == 'C') {
+                CityCount = CityCount - 1;
+            }
+        }
+
+
+        if ($(obj).is(":checked")) {
+            if (CT == 'T') {
+                arrserviceId.push(Id);
+            }
+            else if (CT == 'C') {
+                arrCityId.push(Id);
+            }
+        }
+        else {
+            if (CT == 'T') {
+                arrserviceId.pop(Id);
+            }
+            else if (CT == 'C') {
+                arrCityId.pop(Id);
+            }
+        }
+
+        //DisplayData();
+    }
+
+    $(document).ready(function () {
+        arrserviceId.push(@int.Parse(Url.RequestContext.RouteData.Values["id"].ToString()));
+        @foreach (var city in Model.Cities)
+        {
+            
+        }
+        //DisplayData();
+    });
+
+    function DisplayData() {
+
+
+        var data = {
+
+        }
+        $.ajax(
+            {
+                type: "POST",
+                url: "/api/App/",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                //data: data,
+                success: function (data) {
+                    $('.col-md-8').html('');
+                    var rows = '@foreach (var venue in Model.VenueServices){<div style="float: none !important;" class="shadow p-3 mb-5 bg-white rounded float-right"><div class="container"><div class="row"><div class="col-md-3"><img src="~/CientApp/app/assets/image/lady.PNG" alt="pic"></div><div class="col-md-5"><h3 style="font-family:numans; font-size:22px">@venue.Venues.VenueName</h3><span style="color: #cb6; margin-right:5px">5.0</span><span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span style="font-family:numans ; margin-left:5px; font-size:11px; color: grey">12 review</span><br><p style="color: grey; font-family:numans; font-size:13px; margin-top:5px">@venue.Venues.Sector, @venue.Venues.City.CityName</p><div class="row"><div class="col-sm-1"><fa style="color:#001e62; " name="map" animation="faa-vertical ng "> </fa></div><div class="col-sm-5"><p style="color:#001e62; ">Show on map</p></div></div><label><fa style="color: #00B0B9; margin-right:10px" name="pinterest" animation="faa-vertical ng "></fa><span style="color: #00B0B9; margin-left:6px" class="label-text">off peaks</span></label></div><div style="background-color: #f2f2f2; padding: 10px; font-family: numans; color: #4d4d4d; width:77%">@venue.SubCategories.SubCatDesc<span style=" ; color:#001e62;">@venue.ActualCostPrice</span><br><span style="color: grey">@venue.SubCategories.TimeInMinutes mins</span><span style=" float:right; color:#001e62;">@venue.DiscountedPercentage %</span></div></div></div></div>}';
+                    $('.col-md-8').append(rows);
+                    console.log(data);
+                }, //End of AJAX Success function
+
+                failure: function (data) {
+                    alert(data.responseText);
+                }, //End of AJAX failure function
+                error: function (data) {
+                    alert(data.responseText);
+                } //End of AJAX error function
+            });
+    }
+</script>
+
+
+<div style="background-color: #00a5ad">
+    <h4 style=" color:white; font-weight: 600;line-height: 28px; padding-top:20px; font-family: numans ; font-size: 21px;" class="text-center">
+        @Model.SubCatDesc
+    </h4>
+
+    <p style="color:white; margin-bottom:0px !important; font-family: numans; font-size: 14px;" class="text-center">We've found @Model.VenueCount venues</p>
+    <p style="color:white; padding-bottom:20px ; font-family: numans; font-size: 14px;" class="text-center">Results include: <strong> Trim, Hairstyling, Ladies Haircuts </strong></p>
+</div>
+<div class="container-fluid">
+    <div class="row">
+
+        <div class="col-md-4">
+<div class="container" style="display: block;
+
+width :302px;
+
+height: auto;
+
+padding: 16px;
+
+box-shadow: inset 0 0 0 1px #d9d9d9;
+
+background-color: #fff; margin-left:100px ; " class="  float-left">
+
+                <div class="row">
+                    <div class="col-md-12">
+
+                        <h4 style="line-height: 16px;
+
+color: #808080;
+
+margin-bottom: 12px;color: #ff5c39; font-size:18px ;font-family: numans">
+                            Sort by
+                        </h4>
+
+
+                    </div>
+                    <div class="col">
+                        <label class="medium" style="color: #666" for="inputemp" aria-placeholder="Recommended"></label>
+                        <select id="inputemp" class="form-control">
+                            <option>Recommend</option>
+                            <option>Favourite</option>
+                            <option>Popular</option>
+                            <option>Most Popular</option>
+                            <option>High Rated</option>
+                        </select>
+                    </div>
+                </div>
+                <hr>
+                <div style="border: 1px solid #e2e2e2; ">
+
+                    <a style="text-decoration: none" href="google.com">
+                        <img class="img-fluid img-responsive" src="~/CientApp/app/assets/image/twell-map.png" />
+                    </a>  <br>
+                    <br>
+                    <div class="row">
+                        <div class="col-md-2">
+                            <img style="margin-left:15px" class="img-fluid img-responsive" src="~/CientApp/app/assets/image/twell-lable.png" />
+                        </div>
+                        <div class="col-md-10"> <p style="text-decoration: none; margin-left:10px;color: #ff5c39">Open results on map</p> </div>
+
+                    </div>
+                </div>
+                <br>
+                <div class="col">
+                    <label class="medium" style="font-family:numans ;color: #ff5c39" for="inputemp" aria-placeholder="Recommended" data-toggled="none">  Location</label>
+                    <select id="inputemp" class="form-control">
+                        @foreach (var city in Model.Cities)
+                        {
+                            <option>@city.CityName</option>
+                        }
+                    </select>
+                </div>
+
+
+                <hr>
+                <div class="from-group">
+                    <label style="font-family: numans ; color: #666; margin-left:16px" for="Choosedateandtime">Choose date and time</label>
+                    <input id="Choosedateandtime" name="Choosedateandtime" [(ngModel)]="Choosedateandtime"
+                           type="text" bsDatepicker class="form-control ">
+
+                </div>
+                <hr>
+                <h6 style="font-family: numans ; color: #ff5c39; margin-left:16px">I want to book</h6>
+                <form>
+                    <div *ngFor="let boo of book" class="form-check">
+                        <label>
+                            <input type="radio" name="radio" checked> <span class="label-text">For Specific<span style=" float:right; margin-left: 69px; color:gray;">22</span></span>
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <label>
+                            <input type="radio" name="radio" checked> <span class="label-text">Gift / eVoucher</span>
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <label>
+                            <input type="radio" name="radio" checked> <span class="label-text">Show All</span>
+                        </label>
+                    </div>
+                </form>
+
+                <hr>
+                <h6 style="font-family: numans ; color: #ff5c39; margin-left:16px">Treatments</h6>
+                <form>
+
+                    <div *ngFor="let treat of treatment" class="form-check">
+                        @foreach (var subcat in Model.SubCategories)
+                        {
+                            <label>
+                                @if (int.Parse(Url.RequestContext.RouteData.Values["id"].ToString()) == subcat.Id)
+                                {
+                                    <input type="checkbox" id="@subcat.Id" name="@subcat.Id" checked onchange="checkboxClick(this, 'T', @subcat.Id)">
+                                }
+                                else
+                                {
+                                    <input type="checkbox" id="@subcat.Id" name="@subcat.Id" unchecked onchange="checkboxClick(this, 'T', @subcat.Id)">
+                                }
+                                <span class="label-text">@subcat.SubCatDesc<span style=" margin-left: 3px;color:#ff3803;"></span></span>
+                            </label>
+                            <br />
+                        }
+                    </div>
+
+                </form>
+                <p style="font-family:numans;color: #001e62;
+
+                cursor: pointer; margin-left:36px ; margin-top:5px"></p>
+
+                <hr>
+                <h6 style="font-family: numans ; color: #ff5c39; margin-left:16px">Area</h6>
+                <form>
+
+                    <div *ngFor="let ar of area" class="form-check">
+                        @foreach (var city in Model.Cities)
+                        {
+                            <label>
+                                <input type="checkbox" id="@city.Id" name="@city.Id" onchange="checkboxClick(this, 'C')" checked="checked"> <span class="label-text">@city.CityName<span style=" margin-left: 10px;color:#ff3803;">22</span></span>
+                            </label>
+                            <br />
+                        }
+                    </div>
+
+                </form>
+
+
+                <hr>
+
+
+                <hr>
+                <h6 style="font-family: numans ; color: #ff5c39; margin-left:16px">Price Range</h6>
+                <app-reactive-form-range-slider></app-reactive-form-range-slider>
+                <hr>
+                <h6 style="font-family: numans ; color: #ff5c39; margin-left:16px">Smart Discounts</h6>
+
+                <div class="form-check">
+                    <label>
+                        <fa style="color: #00B0B9; margin-right:10px" name="pinterest" animation="faa-vertical ng "></fa>
+                        <input type="checkbox" name="check"> <span style="color: #00B0B9;" class="label-text">off peaks and last minute</span>
+                        <br> <span style="margin-left:43px">Discounts</span>
+                    </label>
+                </div>
+                <hr>
+                <h6 style="font-family: numans ; color: #ff5c39; margin-left:16px">Express Treatments</h6>
+
+                <div class="form-check">
+                    <label>
+                        <fa style="color: #ff808b; margin-right:10px" name="pinterest" animation="faa-vertical ng "></fa>
+                        <input type="checkbox" name="check"> <span style="color: #ff808b" class="label-text">Express Treatments</span>
+                        <br> <span style="margin-left:43px">(45 minutes or less)</span>
+                    </label>
+                </div>
+
+                <hr>
+                <h6 style="font-family: numans ; color: #ff5c39; margin-left:16px">Express Treatments</h6>
+
+                <div class="form-check">
+                    <label>
+                        <fa style="color: #001e62; margin-right:10px" name="pinterest" animation="faa-vertical ng "></fa>
+                        <input type="checkbox" name="check"> <span style="color: #001e62" class="label-text">Top rated</span>
+                        <br> <span style="margin-left:43px">Awards</span>
+                    </label>
+                </div>
+                <hr>
+            </div>
+        </div>
+        <br>
+        <br>
+        <div class="col-md-8">
+            <p style="font-family: numans" class=" text-center">Want to see venues even closer to you? Narrow your search area by selecting a location below:</p>
+            <p style="font-family: numans; color:#001e62" class=" text-center">England, Northern Ireland, Scotland , Wales</p>
+            <br><br>
+
+            
+        </div>
+    </div>
+</div>
+
+
+@{
+    Html.RenderPartial("_Footer");
+}

@@ -1,0 +1,43 @@
+﻿@model treatwell.Models.SubCategories
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+
+<div>
+    <h4>Sub-Categories</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.SubCatDesc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SubCatDesc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Category.CatDesc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Category.CatDesc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TimeInMinutes)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TimeInMinutes)
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

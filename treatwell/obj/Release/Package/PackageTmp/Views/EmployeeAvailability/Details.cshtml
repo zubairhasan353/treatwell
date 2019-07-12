@@ -1,0 +1,61 @@
+﻿@model treatwell.Models.EmployeeAvailability
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+u
+@{
+    var urlId = Url.RequestContext.RouteData.Values["id"];
+    ViewBag.uv = from p in Model.db.UserVenues.ToList()
+                 select new
+                 {
+                     Text = p.UserId
+                 };
+
+    ViewBag.fv = Model.UserVenues.User.FullName + " - " + Model.UserVenues.Venues.VenueName;
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Employee Availability</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.UserVenues)
+        </dt>
+
+        <dd>
+            <p>@ViewBag.fv</p>
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Day.DayName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Day.DayName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StartTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StartTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EndTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EndTime)
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

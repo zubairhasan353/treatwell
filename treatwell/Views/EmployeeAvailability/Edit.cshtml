@@ -1,0 +1,77 @@
+﻿@model treatwell.ViewModels.EmployeeAvailabilityViewModel
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Edit</h2>
+
+@{
+    ViewBag.uv = from p in Model.db.UserVenues.ToList()
+                 join f in Model.db.Users.ToList() on p.UserId equals f.Id
+                 join s in Model.db.venues.ToList() on p.VenuesId equals s.Id
+                 select new
+                 {
+                     Value = p.Id.ToString(),
+                     Text = f.FullName + " - " + s.VenueName
+                 };
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <h4>Venues</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.EmployeeAvailability.Id)
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.UserVenues, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(m => m.EmployeeAvailability.UserVenuesId, new SelectList(ViewBag.uv, "Value", "Text"), "Select User Venue", new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.EmployeeAvailability.UserVenuesId, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Days, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(m => m.EmployeeAvailability.DayID, new SelectList(Model.Days, "Id", "DayName"), "Select Day", new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.EmployeeAvailability.DayID, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.EmployeeAvailability.StartTime, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.EmployeeAvailability.StartTime, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.EmployeeAvailability.StartTime, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.EmployeeAvailability.EndTime, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.EmployeeAvailability.EndTime, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.EmployeeAvailability.EndTime, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Save" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

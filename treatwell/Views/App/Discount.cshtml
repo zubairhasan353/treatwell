@@ -1,0 +1,113 @@
+﻿@model IEnumerable<treatwell.Models.Cities>
+@{
+    ViewBag.Title = "Discount --- TREATWELL";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Numans">
+<style>
+    html, body {
+        font-size: 17px
+    }
+</style>
+
+<body>
+    <video autoplay="" loop="" muted="" preload="" style="left:-121px; top: 0px; height: 580px; width: 1518px;">
+        <source src="https://www.treatwell.co.uk/inspiration/wp-content/uploads/sites/35/2018/02/HERO_desktop.mp4" type="video/mp4">
+        <source src="http://djbeaver.demos.wpbeaverbuilder.com/wp-content/uploads/sites/22/2016/03/Skate.webm" type="video/webm">
+    </video>
+    <p class="text-center" style="font-size: 3vw;position: absolute; line-height: 100%; color: #ffffff; font-weight: bold;">
+        <span>Join the</span><br>
+        <span> welcome party</span>
+    </p>
+    <br>
+    <br>
+    <br>
+    <div style=" margin-top:80px" class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <p style="text-align: left;font-size: 30px; line-height: 100%; margin-left: 58px; color: #001e62; font-weight: bold;">
+                    Celebrate our new salons<br>
+                    <span style="margin-left: 90px;">with 15% off - use code</span><br>
+                    <span style="margin-left: 20px;">NEW-SALON15</span>
+                </p>
+            </div>
+
+            <div class="col-md-6">
+                <p style="margin-right:20px; font-family:numans">
+                    Our Treatwell scouts are busy pounding the streets across the country,
+                    sussing out the very best salons to welcome to the Treatwell family.
+                    Check out the expert boutiques that have joined our ranks of feel-good
+                    beauty givers and get 15% off as a welcome party treat!
+                </p>
+                <input type="button" class="btn btn-primary btn-lg" value="Simply add the code NEW-SALON15 at checkout">
+            </div>
+        </div>
+
+    </div>
+    <br>
+    <div style="background-color: rgba(245,243,227, 1);">
+
+        <br>
+
+        <p style="text-align: center; margin-top:84px; font-size: 40px; line-height: 100%; color: #001e62; font-weight: bold;">
+            <span style="margin-right: 50px;">Choose</span><br>
+            <span style="margin-left: 160px;">your city</span>
+        </p>
+        <br>
+        <div class="container">
+            <div class="row">
+                @{ 
+                    var i = 0;
+                }
+                @foreach (var city in Model)
+                {
+                    <div class="col-md-4">
+                        <div style="background-color:white; ">
+                            @if (i % 3 == 0)
+                            {
+                                <h2 class="text-center" style="color: #00b0b9 ; padding-top:90px ; margin-bottom: 80px">@city.CityName</h2>
+                                <br> <hr style="width: 81%;">
+                                <input style="margin-left:51px ; margin-top: 20px; margin-bottom: 20px;" type="button" value="Book now with 15% off" class=" btn btn-lg btn-info">
+                                <hr>
+                            }
+                            else if (i % 3 == 1)
+                            {
+                                <h2 class="text-center" style=" color: #ffb500;padding-top:90px ; margin-bottom: 80px">@city.CityName</h2>
+                                <br> <hr style="width: 81%;">
+                                <input style="margin-left:51px ; color: #f7f9ff !important; margin-top: 20px; margin-bottom: 20px;" type="button" value="Book now with 15% off" class=" btn btn-lg btn-warning ">
+                                <hr>
+                            }
+                            else if (i % 3 == 2)
+                            {
+                                <h2 class="text-center" style="color: #001e62 ; padding-top:90px ; margin-bottom: 80px">@city.CityName</h2>
+                                <br> <hr style="width: 81%;">
+                                <input style="margin-left:51px ;color: #f7f9ff !important; background-color: #001e62; margin-top: 20px; margin-bottom: 20px;" type="button" value="Book now with 15% off" class=" btn btn-lg ">
+                                <hr>
+                            }
+                        </div>
+                    </div>
+                    i++;
+                    if(i % 3 == 0)
+                    {
+                        <br />
+                    }
+                }
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h6 style="margin-top:75px; margin-bottom:75px; margin-left:35px ; font-family:numans">
+                    *Minimum spend of £25 per transaction. This promotion runs from 29th January 2019 to 31st March 2019. The New Salon Promotion is open to all UK residents aged 18 and over.
+                    Participating salons subject to change and availability.
+                    Single use only.
+                </h6>
+            </div>
+        </div>
+    </div>
+
+    @{
+        Html.RenderPartial("_Footer");
+    }
+</body>
