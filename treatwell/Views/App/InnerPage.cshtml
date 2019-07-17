@@ -180,7 +180,7 @@
         arrserviceId.push(@int.Parse(Url.RequestContext.RouteData.Values["id"].ToString()));
         @foreach (var city in Model.Cities)
         {
-            
+
         }
         //DisplayData();
     });
@@ -215,7 +215,6 @@
     }
 </script>
 
-
 <div style="background-color: #00a5ad">
     <h4 style=" color:white; font-weight: 600;line-height: 28px; padding-top:20px; font-family: numans ; font-size: 21px;" class="text-center">
         @Model.SubCatDesc
@@ -228,7 +227,11 @@
     <div class="row">
 
         <div class="col-md-4">
-<div class="container" style="display: block;
+
+
+
+
+            <div class="container" style="display: block;
 
 width :302px;
 
@@ -328,11 +331,11 @@ margin-bottom: 12px;color: #ff5c39; font-size:18px ;font-family: numans">
                             <label>
                                 @if (int.Parse(Url.RequestContext.RouteData.Values["id"].ToString()) == subcat.Id)
                                 {
-                                    <input type="checkbox" id="@subcat.Id" name="@subcat.Id" checked onchange="checkboxClick(this, 'T', @subcat.Id)">
+                                    <input type="checkbox" id="@subcat.Id" name="@subcat.Id" checked onchange="checkboxClick(this)">
                                 }
                                 else
                                 {
-                                    <input type="checkbox" id="@subcat.Id" name="@subcat.Id" unchecked onchange="checkboxClick(this, 'T', @subcat.Id)">
+                                    <input type="checkbox" id="@subcat.Id" name="@subcat.Id" unchecked onchange="checkboxClick(this)">
                                 }
                                 <span class="label-text">@subcat.SubCatDesc<span style=" margin-left: 3px;color:#ff3803;"></span></span>
                             </label>
@@ -353,7 +356,7 @@ margin-bottom: 12px;color: #ff5c39; font-size:18px ;font-family: numans">
                         @foreach (var city in Model.Cities)
                         {
                             <label>
-                                <input type="checkbox" id="@city.Id" name="@city.Id" onchange="checkboxClick(this, 'C')" checked="checked"> <span class="label-text">@city.CityName<span style=" margin-left: 10px;color:#ff3803;">22</span></span>
+                                <input type="checkbox" id="@city.Id" name="@city.Id" onchange="checkboxClick(this)"> <span class="label-text">@city.CityName<span style=" margin-left: 10px;color:#ff3803;">22</span></span>
                             </label>
                             <br />
                         }
@@ -409,7 +412,62 @@ margin-bottom: 12px;color: #ff5c39; font-size:18px ;font-family: numans">
             <p style="font-family: numans; color:#001e62" class=" text-center">England, Northern Ireland, Scotland , Wales</p>
             <br><br>
 
-            
+            @foreach (var venue in Model.VenueServices)
+            {
+                <div style="float: none !important;" class="shadow p-3 mb-5 bg-white rounded float-right">
+                    <div class="container">
+
+                        <div class="row">
+                            <div class="col-md-3">
+                                <img src="~/CientApp/app/assets/image/lady.PNG" alt="pic">
+                            </div>
+                            <div class="col-md-5">
+                                <h3 style="font-family:numans; font-size:22px">@venue.Venues.VenueName</h3>
+
+                                <span style="color: #cb6; margin-right:5px">5.0</span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span style="font-family:numans ; margin-left:5px; font-size:11px; color: grey">12 review</span>
+                                <br>
+
+                                <p style="color: grey; font-family:numans; font-size:13px; margin-top:5px">@venue.Venues.Sector, @venue.Venues.City.CityName</p>
+                                <div class="row">
+                                    <div class="col-sm-1">
+                                        <fa style="color:#001e62; " name="map" animation="faa-vertical ng "> </fa>
+                                    </div>
+                                    <div class="col-sm-5">
+                                        <p style="color:#001e62; ">Show on map</p>
+                                    </div>
+                                </div>
+
+
+                                <label>
+                                    <fa style="color: #00B0B9; margin-right:10px" name="pinterest" animation="faa-vertical ng "></fa>
+                                    <span style="color: #00B0B9; margin-left:6px" class="label-text">off peaks</span>
+
+                                </label>
+                            </div>
+                            <div style="background-color: #f2f2f2; padding: 10px; font-family: numans; color: #4d4d4d;" class="container-fluid">
+                                @venue.SubCategories.SubCatDesc<span style=" float:right; color:#001e62;">@venue.ActualCostPrice</span>
+                                <br>
+                                <span style="color: grey">@venue.SubCategories.TimeInMinutes mins</span>
+                                <span style=" float:right; color:#001e62;">@venue.DiscountedPercentage %</span>
+                            </div>
+
+                            @*<div style=" padding: 10px; font-family: numans; color: #4d4d4d;" class="container-fluid">
+                                    Ladies - Wash, Haircut <span style=" float:right; color:#001e62;"> Rs 18</span>
+                                    <br>
+                                    <span style="color: grey">45 mins</span>
+
+                                </div>*@
+                        </div>
+
+                    </div>
+                </div>
+            }
         </div>
     </div>
 </div>
