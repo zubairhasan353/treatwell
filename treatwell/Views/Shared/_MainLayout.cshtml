@@ -13,7 +13,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
     <base href="/">
-
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Numans">
     <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/bootstrap.css" rel="stylesheet" type="text/css" />
     <script src="~/Scripts/modernizr-2.6.2.js"></script>
@@ -27,7 +27,8 @@
     <script src="~/CientApp/systemjs.config.js"></script>
     <script>
         System.import('/CientApp/main.js').catch(function (err) { console.error(err); });
-    </script>
+
+/**/</script>
 </head>
 <body>
 
@@ -43,20 +44,20 @@
     </style>
     <div class="container-fluid" style="padding-top:12px">
         <div class="row">
-            <div class="col-sm-8">
+            <div class="col-md-8">
                 <a href="#">
-                    <img style="margin-left:101px" src="http://www.apex.com.pk/wp-content/uploads/2019/06/treatwell.png" />
+                    <img  src="http://www.apex.com.pk/wp-content/uploads/2019/06/treatwell.png" />
 
                 </a>
 
             </div>
-            <div style=" margin-left:150px" class="col-md-1.5">
-                <a (click)="business()" class="small " style="color: grey; text-decoration:none;" <a onclick="@("window.location.href='"+ Url.Action("Business","App") +"'");">
+            <div style=" " class="col-lg-2 ">
+                <a (click)="business()" class="small " style="color: grey; text-decoration:none; font-family:numans" <a onclick="@("window.location.href='"+ Url.Action("Business","App") +"'");">
     <strong>LIST YOU BUSINESSES</strong>
 </a>
             </div>
             <div class="col-md-1">
-                <a onclick="@("window.location.href='"+ Url.Action("Index","SignIn") +"'");" class="small" style="color: #ff5c39; text-decoration:unset;">
+                <a onclick="@("window.location.href='"+ Url.Action("Index","SignIn") +"'");" class="small" style="color: #ff5c39; text-decoration:unset; font-family:numans">
                     LOG IN
                 </a>
             </div>
