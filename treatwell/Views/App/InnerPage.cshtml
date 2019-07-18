@@ -3,7 +3,7 @@
     ViewBag.Title = "TREATWELL";
     Layout = "~/Views/Shared/_MainLayout.cshtml";
 }
-<link rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Numans">
 <link rel="stylesheet" href="https://unpkg.com/ngx-bootstrap/datepicker/bs-datepicker.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -12,7 +12,7 @@
 <style>
 
     html, body {
-        font-size: 17px
+        font-size: 15px
     }
 
     .checked {
@@ -21,7 +21,8 @@
 
 
     body {
-        padding: 50px;
+       padding: 29px;
+        overflow-x: hidden;
     }
 
     label {
@@ -208,7 +209,7 @@
                 failure: function (data) {
                     alert(data.responseText);
                 }, //End of AJAX failure function
-                error: function (data) {
+                error: function (data) {F
                     alert(data.responseText);
                 } //End of AJAX error function
             });
@@ -225,30 +226,26 @@
 </div>
 <div class="container-fluid">
     <div class="row">
+        <div class="col-md-12">
+            <p style="font-family: numans" class=" text-center">Want to see venues even closer to you? Narrow your search area by selecting a location below:</p>
+            <p style="font-family: numans; color:#001e62" class=" text-center">England, Northern Ireland, Scotland , Wales</p>
+        </div>
 
-        <div class="col-md-4">
+    </div>
 
+</div>
+<div class="container-fluid ">
+    <div class="row">
 
+        <div class="col-lg-4">
 
-
-            <div class="container" style="display: block;
-
-width :302px;
-
-height: auto;
-
-padding: 16px;
-
-box-shadow: inset 0 0 0 1px #d9d9d9;
-
-background-color: #fff; margin-left:100px ; " class="  float-left">
+<div class="container-fluid " style="display: block; width :302px; height: auto; padding: 16px; 
+box-shadow: inset 0 0 0 1px #d9d9d9; background-color: #fff; ">
 
                 <div class="row">
                     <div class="col-md-12">
 
-                        <h4 style="line-height: 16px;
-
-color: #808080;
+                        <h4 style="line-height: 16px; color: #808080;
 
 margin-bottom: 12px;color: #ff5c39; font-size:18px ;font-family: numans">
                             Sort by
@@ -256,7 +253,7 @@ margin-bottom: 12px;color: #ff5c39; font-size:18px ;font-family: numans">
 
 
                     </div>
-                    <div class="col">
+                    <div class="col ">
                         <label class="medium" style="color: #666" for="inputemp" aria-placeholder="Recommended"></label>
                         <select id="inputemp" class="form-control">
                             <option>Recommend</option>
@@ -408,65 +405,69 @@ margin-bottom: 12px;color: #ff5c39; font-size:18px ;font-family: numans">
         <br>
         <br>
         <div class="col-md-8">
-            <p style="font-family: numans" class=" text-center">Want to see venues even closer to you? Narrow your search area by selecting a location below:</p>
-            <p style="font-family: numans; color:#001e62" class=" text-center">England, Northern Ireland, Scotland , Wales</p>
+
             <br><br>
 
             @foreach (var venue in Model.VenueServices)
             {
-                <div style="float: none !important;" class="shadow p-3 mb-5 bg-white rounded float-right">
-                    <div class="container">
+        <div style="float: none !important;" class="shadow p-3 mb-5 bg-white rounded float-right">
+            <div class="container">
 
+                <div class="row">
+                    <div class="col-md-3">
+                        <img src="~/CientApp/app/assets/image/lady.PNG" alt="pic">
+                    </div>
+                    <div class="col-md-5">
+                        <h3 style="font-family:numans; font-size:22px">@venue.Venues.VenueName</h3>
+
+                        <span style="color: #cb6; margin-right:5px">5.0</span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span style="font-family:numans ; margin-left:5px; font-size:11px; color: grey">12 review</span>
+                        <br>
+
+                        <p style="color: grey; font-family:numans; font-size:13px; margin-top:5px">@venue.Venues.Sector, @venue.Venues.City.CityName</p>
                         <div class="row">
-                            <div class="col-md-3">
-                                <img src="~/CientApp/app/assets/image/lady.PNG" alt="pic">
+                            <div class="col-sm-1">
+                                <fa style="color:#001e62; " name="map" animation="faa-vertical ng "> </fa>
                             </div>
-                            <div class="col-md-5">
-                                <h3 style="font-family:numans; font-size:22px">@venue.Venues.VenueName</h3>
-
-                                <span style="color: #cb6; margin-right:5px">5.0</span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span style="font-family:numans ; margin-left:5px; font-size:11px; color: grey">12 review</span>
-                                <br>
-
-                                <p style="color: grey; font-family:numans; font-size:13px; margin-top:5px">@venue.Venues.Sector, @venue.Venues.City.CityName</p>
-                                <div class="row">
-                                    <div class="col-sm-1">
-                                        <fa style="color:#001e62; " name="map" animation="faa-vertical ng "> </fa>
-                                    </div>
-                                    <div class="col-sm-5">
-                                        <p style="color:#001e62; ">Show on map</p>
-                                    </div>
-                                </div>
-
-
-                                <label>
-                                    <fa style="color: #00B0B9; margin-right:10px" name="pinterest" animation="faa-vertical ng "></fa>
-                                    <span style="color: #00B0B9; margin-left:6px" class="label-text">off peaks</span>
-
-                                </label>
+                            <div class="col-sm-5">
+                                <p style="color:#001e62; ">Show on map</p>
                             </div>
-                            <div style="background-color: #f2f2f2; padding: 10px; font-family: numans; color: #4d4d4d;" class="container-fluid">
-                                @venue.SubCategories.SubCatDesc<span style=" float:right; color:#001e62;">@venue.ActualCostPrice</span>
-                                <br>
-                                <span style="color: grey">@venue.SubCategories.TimeInMinutes mins</span>
-                                <span style=" float:right; color:#001e62;">@venue.DiscountedPercentage %</span>
-                            </div>
-
-                            @*<div style=" padding: 10px; font-family: numans; color: #4d4d4d;" class="container-fluid">
-                                    Ladies - Wash, Haircut <span style=" float:right; color:#001e62;"> Rs 18</span>
-                                    <br>
-                                    <span style="color: grey">45 mins</span>
-
-                                </div>*@
                         </div>
 
+
+                        <label>
+                            <fa style="color: #00B0B9; margin-right:10px" name="pinterest" animation="faa-vertical ng "></fa>
+                            <span style="color: #00B0B9; margin-left:6px" class="label-text">off peaks</span>
+
+                        </label>
                     </div>
+                    <br />
+
+
+                    @*<div style=" padding: 10px; font-family: numans; color: #4d4d4d;" class="container-fluid">
+                    Ladies - Wash, Haircut <span style=" float:right; color:#001e62;"> Rs 18</span>
+                    <br>
+                    <span style="color: grey">45 mins</span>
+
+                </div>*@
                 </div>
+
+            </div>
+            <div style="background-color: #f2f2f2; padding: 10px; font-family: numans; color: #4d4d4d;" class="container-fluid">
+                @venue.SubCategories.SubCatDesc<span style=" float:right; color:#001e62;">@venue.ActualCostPrice</span>
+                <br>
+                <span style="color: grey">@venue.SubCategories.TimeInMinutes mins</span>
+                <span style=" float:right; color:#001e62;">@venue.DiscountedPercentage %</span>
+            </div>
+
+        </div>
+                
+
             }
         </div>
     </div>
