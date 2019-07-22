@@ -19,6 +19,7 @@ namespace treatwell.ViewModels
         public CustomerProfileViewModel()
         {
             venues = new List<Venues>();
+            customerBookings = new List<CustomerBooking>();
         }
     }
 }
