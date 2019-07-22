@@ -4,7 +4,13 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  
 <style>
+    .navbar-expand .navbar-nav .nav-link {
+            padding-right: .1rem !important;
+        padding-left: .5rem;
+    }
+
     .pointer {
         cursor: pointer;
     }
@@ -12,7 +18,7 @@
   font-family:numans}
 </style>
 
-<div class="collapse navbar-collapse font"  id="navbarTogglerDemo02" [ngbCollapse]="false">
+<div style="padding-right: 0.2rem !important;"class=" navbar-expand font" >
     <ul class="navbar-nav mr-auto mt-2 mt-md-0">
         @foreach (var vm in Model)
         {
@@ -45,16 +51,16 @@
                             </div>
                             <div style="border: 2px solid #e2e2e2; margin-left: 103px; padding:0px !important; background-color: white " class="col-sm-3">
                                 <a style="text-decoration: none" href="google.com">
-                                    <img class="img-fluid img-responsive" src="~/CientApp/app/assets/image/twell_hair.jpg" />
-                                    <h6 style="text-decoration: none ;color:#666; letter-spacing: 1px; padding:10px">Last minute? Cuts near you</h6>
+                                    <img class="img-fluid img-responsive d-none d-md-block" src="~/CientApp/app/assets/image/twell_hair.jpg" />
+                                    <h6 class="d-none d-md-block"style="text-decoration: none ;color:#666; letter-spacing: 1px; padding:10px">Last minute? Cuts near you</h6>
                                 </a>
 
                             </div>
                             <div style=" padding-left: 30px"><span></span></div>
-                            <div style="border: 2px solid #e2e2e2; padding:0px !important; background-color: white " class="col-sm-3">
+                            <div style="border: 2px solid #e2e2e2; padding:0px !important; background-color: white " class="col-sm-3 d-none d-md-block">
                                 <a style="text-decoration: none" href="google.com">
-                                    <img class="img-fluid img-responsive float:right" src="~/CientApp/app/assets/image/twell_face2.jpg" />
-                                    <h6 style="text-decoration: none ;color:#666; letter-spacing: 1px; padding:10px">Hair treatments : the lowdown</h6>
+                                    <img class="img-fluid img-responsive float:right d-none d-md-block" src="~/CientApp/app/assets/image/twell_face2.jpg" />
+                                    <h6 class="d-none d-md-block" style="text-decoration: none ;color:#666; letter-spacing: 1px; padding:10px">Hair treatments : the lowdown</h6>
                                 </a>
 
                             </div>
@@ -65,10 +71,10 @@
 
         }
         <li class="nav-item">
-            <a onclick="@("window.location.href='"+ Url.Action("Discount","App") +"'");" class="nav-link">NEW SALON DISCOUNT</a>
+            <a onclick="@("window.location.href='"+ Url.Action("Discount","App") +"'");" class="nav-link">DISCOUNT</a>
         </li>
         <li class="nav-item">
-            <a onclick="@("window.location.href='"+ Url.Action("Business","App") +"'");" class="nav-link">THE TREATMENT FILES</a>
+            <a onclick="@("window.location.href='"+ Url.Action("Business","App") +"'");" class="nav-link">FILES</a>
         </li>
 
         </ul>

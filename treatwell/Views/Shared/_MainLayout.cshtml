@@ -4,6 +4,12 @@
 <head>
     <style>
 
+        
+    .navbar-expand .navbar-nav .nav-link {
+            padding-right: .1rem !important;
+        padding-left: .5rem;
+    }
+
         a:hover {
             cursor: pointer;
         }
@@ -82,19 +88,10 @@
     </div>
     </div> -->
 
-    <div style="padding-left: 79px; font-size: 13px" class="container-fluid small">
-        <nav class="navbar navbar-expand-lg navbar-light ">
+    <div  class="container-fluid small">
+        <nav style="float:left;width: 100%;" class="navbar navbar-expand-lg navbar-light ">
             <a class="navbar-brand" href="#"> </a>
-            <button class="navbar-toggler btn btn-outline-primary"
-                    type="button" data-toggle="collapse"
-                    data-target="#navbarTogglerDemo02"
-                    aria-expanded="false"
-                    aria-label="Toggle navigation"
-                    (click)="isCollap = !isCollap"
-                    [attr.aria-expanded]="!isCollap"
-                    aria-controls="navbarTogglerDemo02" style="margin-left: 168px;">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+           
 
             @{
                 Html.RenderAction("SideMenu", "App");
