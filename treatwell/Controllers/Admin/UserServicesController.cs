@@ -9,6 +9,7 @@ using System.Data.Entity;
 
 namespace treatwell.Controllers.Admin
 {
+    [Authorize]
     public class UserServicesController : Controller
     {
         private ApplicationDbContext _context = new ApplicationDbContext();

@@ -10,6 +10,7 @@ using WebMatrix.Data;
 
 namespace treatwell.Controllers.Admin
 {
+    [Authorize]
     public class EmployeeAvailabilityController : Controller
     {
         private ApplicationDbContext _context = new ApplicationDbContext();

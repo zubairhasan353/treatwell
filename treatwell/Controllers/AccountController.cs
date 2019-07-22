@@ -10,18 +10,22 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using treatwell.Models;
 using System.IO;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace treatwell.Controllers
 {
-    [Authorize]
+    //[Authorize(Roles = "SuperAdmin")]
     public class AccountController : Controller
     {
         private string FullPath;
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
 
+        private ApplicationDbContext _context;
+
         public AccountController()
         {
+            _context = new ApplicationDbContext();
         }
 
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
@@ -155,6 +159,16 @@ namespace treatwell.Controllers
             }
         }
 
+        public ActionResult DefineRoles()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult DefineRoles(Microsoft.AspNet.Identity.IRole role)
+        {
+            return View();
+        }
         //
         // POST: /Account/Register
         [HttpPost]

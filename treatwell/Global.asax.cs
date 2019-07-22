@@ -13,6 +13,7 @@ namespace treatwell
     {
         protected void Application_Start()
         {
+            //GlobalFilters.Filters.Add(new AuthorizeAttribute());
             GlobalConfiguration.Configure(WebApiConfig.Register);
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);

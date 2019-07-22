@@ -12,6 +12,7 @@ using System.Text;
 
 namespace treatwell.Controllers.Admin
 {
+    [Authorize]
     public class VenuesController : Controller
     {
         private ApplicationDbContext _context = new ApplicationDbContext();

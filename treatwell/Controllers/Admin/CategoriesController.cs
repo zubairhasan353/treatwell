@@ -7,6 +7,7 @@ using treatwell.Models;
 
 namespace treatwell.Controllers.Admin
 {
+    [Authorize]
     public class CategoriesController : Controller
     {
         private ApplicationDbContext _context = new ApplicationDbContext();

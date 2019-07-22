@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace treatwell.Controllers.Admin
 {
+    [Authorize]
     public class BookingDaysTimeController : Controller
     {
         // GET: BookingDaysTime

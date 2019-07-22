@@ -9,6 +9,7 @@ using treatwell.ViewModels;
 
 namespace treatwell.Controllers.Admin
 {
+    [Authorize]
     public class EmployeeAbsentController : Controller
     {
         private ApplicationDbContext _context = new ApplicationDbContext();

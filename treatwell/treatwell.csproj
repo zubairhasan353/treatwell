@@ -209,10 +209,14 @@
     <Compile Include="Controllers\Admin\VenueServicesController.cs" />
     <Compile Include="Controllers\API\AppController.cs" />
     <Compile Include="Controllers\API\CitiesController.cs" />
+    <Compile Include="Controllers\API\CustomerProfileController.cs" />
+    <Compile Include="Controllers\API\EmployeeProfileController.cs" />
     <Compile Include="Controllers\AppController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\RolesController.cs" />
     <Compile Include="Controllers\SignInController.cs" />
+    <Compile Include="Controllers\UserRolesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -500,6 +504,34 @@
     <Compile Include="Migrations\201907031208111_CreateProductsandProdsinSubCat.Designer.cs">
       <DependentUpon>201907031208111_CreateProductsandProdsinSubCat.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201907181310536_ASPNetRolesControllerAction.cs" />
+    <Compile Include="Migrations\201907181310536_ASPNetRolesControllerAction.Designer.cs">
+      <DependentUpon>201907181310536_ASPNetRolesControllerAction.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201907181808132_AlterASPNetUsers123132.cs" />
+    <Compile Include="Migrations\201907181808132_AlterASPNetUsers123132.Designer.cs">
+      <DependentUpon>201907181808132_AlterASPNetUsers123132.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201907181809288_RollbackASPNetUsers123132.cs" />
+    <Compile Include="Migrations\201907181809288_RollbackASPNetUsers123132.Designer.cs">
+      <DependentUpon>201907181809288_RollbackASPNetUsers123132.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201907181822408_DelUserandRolesControllerAction.cs" />
+    <Compile Include="Migrations\201907181822408_DelUserandRolesControllerAction.Designer.cs">
+      <DependentUpon>201907181822408_DelUserandRolesControllerAction.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201907181825413_AddUserRolesTable.cs" />
+    <Compile Include="Migrations\201907181825413_AddUserRolesTable.Designer.cs">
+      <DependentUpon>201907181825413_AddUserRolesTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201907181833240_AddUserRolesTable1.cs" />
+    <Compile Include="Migrations\201907181833240_AddUserRolesTable1.Designer.cs">
+      <DependentUpon>201907181833240_AddUserRolesTable1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201907190920418_AddUserRolesForiegnKeyTable.cs" />
+    <Compile Include="Migrations\201907190920418_AddUserRolesForiegnKeyTable.Designer.cs">
+      <DependentUpon>201907190920418_AddUserRolesForiegnKeyTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BookingDaysTime.cs" />
@@ -520,20 +552,26 @@
     <Compile Include="Models\ProdsUsedInSubCat.cs" />
     <Compile Include="Models\Products.cs" />
     <Compile Include="Models\SubCategories.cs" />
+    <Compile Include="Models\UserRoles.cs" />
     <Compile Include="Models\UserServices.cs" />
     <Compile Include="Models\UserVenues.cs" />
     <Compile Include="Models\Venues.cs" />
     <Compile Include="Models\VenueServices.cs" />
+    <Compile Include="OfficeEntities.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\BookingDaysTimeViewModel.cs" />
     <Compile Include="ViewModels\CatSubCatViewModel.cs" />
     <Compile Include="ViewModels\CatSubViewModel.cs" />
+    <Compile Include="ViewModels\CustomerProfileViewModel.cs" />
     <Compile Include="ViewModels\EmployeeAbsentViewModel.cs" />
     <Compile Include="ViewModels\EmployeeAvailabilityViewModel.cs" />
+    <Compile Include="ViewModels\EmployeeProfileViewModel.cs" />
     <Compile Include="ViewModels\InnerPageViewModel.cs" />
     <Compile Include="ViewModels\ProductsSubCatsViewModel.cs" />
+    <Compile Include="ViewModels\UserRolesViewModel.cs" />
     <Compile Include="ViewModels\UserServicesViewModel.cs" />
+    <Compile Include="ViewModels\UsersinRoleViewModel.cs" />
     <Compile Include="ViewModels\UserVenuesViewModel.cs" />
     <Compile Include="ViewModels\VenueCitiesViewModel.cs" />
     <Compile Include="ViewModels\VenueServicesViewModel.cs" />
@@ -1765,6 +1803,12 @@
     <Content Include="Views\ProdsUsedInSubCat\Create.cshtml" />
     <Content Include="Views\ProdsUsedInSubCat\Edit.cshtml" />
     <Content Include="Views\ProdsUsedInSubCat\Delete.cshtml" />
+    <Content Include="Views\Roles\Index.cshtml" />
+    <Content Include="Views\Roles\Create.cshtml" />
+    <Content Include="Views\Roles\Edit.cshtml" />
+    <Content Include="Views\Roles\Delete.cshtml" />
+    <Content Include="Views\Roles\ManageUserRoles.cshtml" />
+    <Content Include="Views\UserRoles\UserWithRoles.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1997,6 +2041,27 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201907031208111_CreateProductsandProdsinSubCat.resx">
       <DependentUpon>201907031208111_CreateProductsandProdsinSubCat.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907181310536_ASPNetRolesControllerAction.resx">
+      <DependentUpon>201907181310536_ASPNetRolesControllerAction.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907181808132_AlterASPNetUsers123132.resx">
+      <DependentUpon>201907181808132_AlterASPNetUsers123132.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907181809288_RollbackASPNetUsers123132.resx">
+      <DependentUpon>201907181809288_RollbackASPNetUsers123132.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907181822408_DelUserandRolesControllerAction.resx">
+      <DependentUpon>201907181822408_DelUserandRolesControllerAction.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907181825413_AddUserRolesTable.resx">
+      <DependentUpon>201907181825413_AddUserRolesTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907181833240_AddUserRolesTable1.resx">
+      <DependentUpon>201907181833240_AddUserRolesTable1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907190920418_AddUserRolesForiegnKeyTable.resx">
+      <DependentUpon>201907190920418_AddUserRolesForiegnKeyTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

@@ -3,6 +3,8 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.AspNet.Identity.Owin;
+using Microsoft.Owin;
 
 namespace treatwell.Models
 {
@@ -20,7 +22,34 @@ namespace treatwell.Models
             return userIdentity;
         }
     }
-    
+
+    public class ApplicationRole : IdentityRole
+    {
+        //public async Task<RoleStore> GenerateRoleIdentityAsync(RoleManager<ApplicationRole> manager)
+        //{
+        //    // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
+        //    var roleIdentity = manager.Create(this);
+        //    // Add custom user claims here
+        //    return roleIdentity;
+        //}
+    }
+
+
+    public class ApplicationRoleManager : RoleManager<IdentityRole>
+    {
+        public ApplicationRoleManager(IRoleStore<IdentityRole, string> roleStore)
+        : base(roleStore) { }
+
+        public static ApplicationRoleManager Create(
+            IdentityFactoryOptions<ApplicationRoleManager> options,
+            IOwinContext context)
+        {
+            var manager = new ApplicationRoleManager(
+                new RoleStore<IdentityRole>(context.Get<ApplicationDbContext>()));
+            return manager;
+        }
+    }
+
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public DbSet<Categories> categories { get; set; }
@@ -43,6 +72,7 @@ namespace treatwell.Models
         public DbSet<UserVenues> UserVenues { get; set; }
         public DbSet<UserServices> UserServices { get; set; }
         public DbSet<EmployeeAbsent> EmployeeAbsents { get; set; }
+        public DbSet<UserRoles> UserRoles { get; set; }
 
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)

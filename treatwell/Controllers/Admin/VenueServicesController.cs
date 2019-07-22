@@ -9,13 +9,15 @@ using System.Data.Entity;
 
 namespace treatwell.Controllers.Admin
 {
+    [Authorize]
     public class VenueServicesController : Controller
     {
-        private ApplicationDbContext _context = new ApplicationDbContext();
+        private ApplicationDbContext _context;
         public VenueServicesController()
         {
-
+            _context = new ApplicationDbContext();
         }
+        
         // GET: VenueServices
         public ActionResult Index()
         {
