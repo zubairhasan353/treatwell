@@ -18,7 +18,7 @@ namespace treatwell.Controllers.API
         }
 
         [System.Web.Http.HttpGet]
-        public IHttpActionResult CProfile([FromUri] string UserId)
+        public IHttpActionResult GetEmployeeProfile([FromUri] string UserId)
         {
             var viewModel = new EmployeeProfileViewModel();
 

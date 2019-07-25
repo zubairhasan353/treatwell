@@ -9,6 +9,9 @@ using System.Net.Http;
 using System.Web.Http;
 using treatwell.Models;
 using treatwell.ViewModels;
+using AutoMapper;
+using treatwell.Dtos;
+
 namespace treatwell.Controllers.API
 {
     public class CustomerProfileController : ApiController
@@ -20,25 +23,40 @@ namespace treatwell.Controllers.API
         }
 
         [System.Web.Http.HttpGet]
-        public IHttpActionResult CProfile([FromUri] string UserId)
+        public IHttpActionResult GetCustomerProfile([FromUri] string UserId)
         {
             var viewModel = new CustomerProfileViewModel();
 
-            var UserTable = _context.Users.Where(u => u.Id == UserId).Single(u => u.Id == UserId);
-            var VenueName = _context.UserVenues.Include("Venues").Where(v => v.UserId == UserId).FirstOrDefault(v => v.UserId == UserId).Venues.VenueName;
-            
-            var FullName = UserTable.FullName;
-            var UserName = UserTable.UserName;
-            var Email = UserTable.Email;
-            var PhoneNo = UserTable.PhoneNumber;
-            var ImagePath = UserTable.ImagePath;
+            var User = _context.Users.Where(u => u.Id == UserId).Select(Mapper.Map<ApplicationUser, ApplicationUserDto>).ToList();
+            var CustomerBooking = _context.CustomerBookings.Where(u => u.CustomerId == UserId).Select(Mapper.Map<CustomerBooking, CustomerBookingDto>).ToList();
+            //var venues = _context.venues.Include("CustomerBookingDetails").ToList();
 
-            viewModel.FullName = FullName;
-            viewModel.Email = Email;
-            viewModel.ImagePath = ImagePath;
-            viewModel.PhoneNumber = PhoneNo;
-            viewModel.UserName = UserName;
-            viewModel.VenueName = VenueName;
+            var venuesRaw = (from cb in _context.CustomerBookings
+                             join cbd in _context.CustomerBookingDetails on cb.Id equals cbd.CustomerBookingId
+                             join vs in _context.VenueServices on cbd.VenueServiceId equals vs.Id
+                             join v in _context.venues on vs.VenuesId equals v.Id
+                             where cb.CustomerId == UserId
+                             select new
+                             {
+                                 v.Id,
+                                 v.VenueName, 
+                                 v.Address
+                             }).ToList();
+            List<VenuesCustProfDto> venues = new List<VenuesCustProfDto>();
+            foreach (var obj in venuesRaw)
+            {
+                VenuesCustProfDto venue = new VenuesCustProfDto
+                {
+                    Id = obj.Id,
+                    VenueName = obj.VenueName, 
+                    Address = obj.Address
+                };
+                venues.Add(venue);
+            }
+
+            viewModel.User.AddRange(User);
+            viewModel.customerBookings.AddRange(CustomerBooking);
+            viewModel.venues.AddRange(venues);
 
             return Ok(viewModel);
         }

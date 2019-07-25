@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AutoMapper;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -65,13 +66,12 @@ namespace Angular_MVC.Controllers
             
             var subcat = _context.subCategories.Where(c => c.CategoryID == catId).ToList();
             var subCatDesc = subCatTable.SubCatDesc;
-            var VenueCount = _context.VS.Where(c => c.SubCategoriesId == subCatId).Count();
-            var ProductsList = _context.Products.ToList();
+            var VenueCount = _context.VenueServices.Where(c => c.SubCategoriesId == subCatId).Count();
             
-            var venueServices = _context.VS.Include("Venues").Where(c => c.SubCategoriesId == subCatId).ToList();
+            var venueServices = _context.VenueServices.Include("Venues").Where(c => c.SubCategoriesId == subCatId).ToList();
             //var venues = _context.VS.Where(c => c.Venues.Id == c.VenuesId).ToList();
             var venuesRaw = (from v in _context.venues
-                     join vs in _context.VS on v.Id equals vs.VenuesId
+                     join vs in _context.VenueServices on v.Id equals vs.VenuesId
                              where vs.SubCategoriesId == subCatId
                      select new
                      {
@@ -96,7 +96,6 @@ namespace Angular_MVC.Controllers
                 SubCategories = subcat, 
                 VenueServices = venueServices,
                 SubCatDesc = subCatDesc,
-                Products = ProductsList,
                 SubCatCount = subcat.Count(),
                 VenueCount = VenueCount,
                 CityCount = _context.Cities.Count()

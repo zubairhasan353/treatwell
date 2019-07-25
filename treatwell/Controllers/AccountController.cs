@@ -151,12 +151,12 @@ namespace treatwell.Controllers
         [HttpPost]
         public void Upload(HttpPostedFileBase file)
         {
-            if (file != null && file.ContentLength > 0)
-            { 
-                FullPath = Path.Combine(Server.MapPath("~/Images"),
-                                           Path.GetFileName(file.FileName));
-                file.SaveAs(FullPath);
-            }
+            //if (file != null && file.ContentLength > 0)
+            //{ 
+            //    FullPath = Path.Combine(Server.MapPath("~/Images"),
+            //                               Path.GetFileName(file.FileName));
+            //    file.SaveAs(FullPath);
+            //}
         }
 
         public ActionResult DefineRoles()
@@ -178,9 +178,9 @@ namespace treatwell.Controllers
         {
             if (ImagePath != null && ImagePath.ContentLength > 0)
             {
-                FullPath = Path.Combine(Server.MapPath("~/Images"),
-                                           Path.GetFileName(ImagePath.FileName));
+                FullPath = Path.Combine(Server.MapPath("/Images/"), Path.GetFileName(ImagePath.FileName));
                 ImagePath.SaveAs(FullPath);
+                FullPath = "~/Images/" + Path.GetFileName(ImagePath.FileName);
             }
             if (ModelState.IsValid)
             {

@@ -57,7 +57,7 @@ namespace treatwell.Models
         public DbSet<Products> Products { get; set; }
         public DbSet<ProdsUsedInSubCat> prodsUsedInSubCats { get; set; }
         public DbSet<Venues> venues { get; set; }
-        public DbSet<VenueServices> VS { get; set; }
+        public DbSet<VenueServices> VenueServices { get; set; }
         public DbSet<LogInDetails> LogInDetails { get; set; }
         public DbSet<BookingDaysTime> BookingDaysTimes { get; set; }
         public DbSet<EmployeeAvailability> EmployeeAvailabilities { get; set; }

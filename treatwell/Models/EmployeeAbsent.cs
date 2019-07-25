@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace treatwell.Models
 {
-    public class EmployeeAbsent
+    public class EmployeeAbsent : BaseClass
     {
         public int Id { get; set; }
         
@@ -17,13 +17,5 @@ namespace treatwell.Models
         [Required]
         [Display(Name = "Absent On")]
         public DateTime AbsentOn { get; set; }
-
-        public ApplicationUser ApplicationUserCreatedBy { get; set; }
-        public string ApplicationUserCreatedById { get; set; }
-        public DateTime ApplicationUserCreatedDate { get; set; }
-
-        public ApplicationUser ApplicationUserLastUpdatedBy { get; set; }
-        public string ApplicationUserLastUpdatedById { get; set; }
-        public DateTime ApplicationUserLastUpdatedDate { get; set; }
     }
 }

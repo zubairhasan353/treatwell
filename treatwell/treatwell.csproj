@@ -47,6 +47,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=4.1.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.4.1.0\lib\net45\AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="NinjaNye.SearchExtensions, Version=3.0.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\NinjaNye.SearchExtensions.3.0.1\lib\net45\NinjaNye.SearchExtensions.dll</HintPath>
@@ -191,6 +194,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
+    <Compile Include="App_Start\MappingProfile.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
@@ -211,12 +215,24 @@
     <Compile Include="Controllers\API\CitiesController.cs" />
     <Compile Include="Controllers\API\CustomerProfileController.cs" />
     <Compile Include="Controllers\API\EmployeeProfileController.cs" />
+    <Compile Include="Controllers\API\SaloonProfileController.cs" />
     <Compile Include="Controllers\AppController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\RolesController.cs" />
     <Compile Include="Controllers\SignInController.cs" />
     <Compile Include="Controllers\UserRolesController.cs" />
+    <Compile Include="Dtos\ApplicationUserDto.cs" />
+    <Compile Include="Dtos\AppVenueServicesDtos.cs" />
+    <Compile Include="Dtos\CategoriesDto.cs" />
+    <Compile Include="Dtos\CitiesDto.cs" />
+    <Compile Include="Dtos\CustomerBookingDetailsDto.cs" />
+    <Compile Include="Dtos\CustomerBookingDto.cs" />
+    <Compile Include="Dtos\SubCategoriesDto.cs" />
+    <Compile Include="Dtos\UserVenuesDto.cs" />
+    <Compile Include="Dtos\VenuesCustProfDto.cs" />
+    <Compile Include="Dtos\VenuesDto.cs" />
+    <Compile Include="Dtos\VenueServicesDto.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -532,8 +548,17 @@
     <Compile Include="Migrations\201907190920418_AddUserRolesForiegnKeyTable.Designer.cs">
       <DependentUpon>201907190920418_AddUserRolesForiegnKeyTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201907231719217_HasNecessaryDataChanged.cs" />
+    <Compile Include="Migrations\201907231719217_HasNecessaryDataChanged.Designer.cs">
+      <DependentUpon>201907231719217_HasNecessaryDataChanged.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201907241117484_AlterNameVStoVenueServices.cs" />
+    <Compile Include="Migrations\201907241117484_AlterNameVStoVenueServices.Designer.cs">
+      <DependentUpon>201907241117484_AlterNameVStoVenueServices.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\BaseClass.cs" />
     <Compile Include="Models\BookingDaysTime.cs" />
     <Compile Include="Models\Categories.cs" />
     <Compile Include="Models\Cities.cs" />
@@ -567,8 +592,10 @@
     <Compile Include="ViewModels\EmployeeAbsentViewModel.cs" />
     <Compile Include="ViewModels\EmployeeAvailabilityViewModel.cs" />
     <Compile Include="ViewModels\EmployeeProfileViewModel.cs" />
+    <Compile Include="ViewModels\InnerPageDtoViewModel.cs" />
     <Compile Include="ViewModels\InnerPageViewModel.cs" />
     <Compile Include="ViewModels\ProductsSubCatsViewModel.cs" />
+    <Compile Include="ViewModels\SaloonProfileViewModel.cs" />
     <Compile Include="ViewModels\UserRolesViewModel.cs" />
     <Compile Include="ViewModels\UserServicesViewModel.cs" />
     <Compile Include="ViewModels\UsersinRoleViewModel.cs" />
@@ -2062,6 +2089,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201907190920418_AddUserRolesForiegnKeyTable.resx">
       <DependentUpon>201907190920418_AddUserRolesForiegnKeyTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907231719217_HasNecessaryDataChanged.resx">
+      <DependentUpon>201907231719217_HasNecessaryDataChanged.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907241117484_AlterNameVStoVenueServices.resx">
+      <DependentUpon>201907241117484_AlterNameVStoVenueServices.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

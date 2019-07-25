@@ -10,7 +10,6 @@ namespace treatwell.ViewModels
     {
         public List<Cities> Cities { get; set; }
         public List<Venues> Venues { get; set; }
-        public List<Products> Products { get; set; }
         public List<SubCategories> SubCategories { get; set; }
         public List<Categories> categories { get; set; }
         public List<VenueServices> VenueServices { get; set; }
@@ -23,7 +22,6 @@ namespace treatwell.ViewModels
         {
             Cities = new List<Cities>();
             Venues = new List<Venues>();
-            Products = new List<Products>();
             SubCategories = new List<SubCategories>();
             categories = new List<Categories>();
             VenueServices = new List<VenueServices>();

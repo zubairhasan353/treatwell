@@ -6,6 +6,8 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using System.Web.Http;
+using treatwell.App_Start;
+using AutoMapper;
 
 namespace treatwell
 {
@@ -13,6 +15,7 @@ namespace treatwell
     {
         protected void Application_Start()
         {
+            Mapper.Initialize(v => v.AddProfile<MappingProfile>());
             //GlobalFilters.Filters.Add(new AuthorizeAttribute());
             GlobalConfiguration.Configure(WebApiConfig.Register);
             AreaRegistration.RegisterAllAreas();

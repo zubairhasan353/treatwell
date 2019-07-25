@@ -21,7 +21,7 @@ namespace treatwell.Controllers.Admin
         // GET: VenueServices
         public ActionResult Index()
         {
-            var vsList = _context.VS.Include(c => c.Venues).
+            var vsList = _context.VenueServices.Include(c => c.Venues).
                 Include(d => d.SubCategories).ToList();
             return View(vsList);
         }
@@ -29,7 +29,7 @@ namespace treatwell.Controllers.Admin
         // GET: VenueServices/Details/5
         public ActionResult Details(int id)
         {
-            var vs = _context.VS.Include(c => c.Venues).
+            var vs = _context.VenueServices.Include(c => c.Venues).
                 Include(d => d.SubCategories).SingleOrDefault(c => c.Id == id);
 
             if (vs == null)
@@ -77,7 +77,7 @@ namespace treatwell.Controllers.Admin
                 vs.ApplicationUserLastUpdatedById = vs.ApplicationUserCreatedById;
                 vs.ApplicationUserLastUpdatedDate = DateTime.Now;
                 // TODO: Add insert logic here
-                _context.VS.Add(vs);
+                _context.VenueServices.Add(vs);
                 _context.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -90,7 +90,7 @@ namespace treatwell.Controllers.Admin
         // GET: VenueServices/Edit/5
         public ActionResult Edit(int id)
         {
-            var vs = _context.VS.SingleOrDefault(c => c.Id == id);
+            var vs = _context.VenueServices.SingleOrDefault(c => c.Id == id);
 
             if (vs == null)
                 return HttpNotFound();
@@ -123,7 +123,7 @@ namespace treatwell.Controllers.Admin
                     //return View("CustomerForm", viewModel);
                 }
                 // TODO: Add update logic here
-                var vsinDb = _context.VS.Single(s => s.Id == vs.Id);
+                var vsinDb = _context.VenueServices.Single(s => s.Id == vs.Id);
                 vsinDb.SubCategoriesId = vs.SubCategoriesId;
                 vsinDb.VenuesId = vs.VenuesId;
                 vsinDb.ActualCostPrice = vs.ActualCostPrice;
@@ -141,7 +141,7 @@ namespace treatwell.Controllers.Admin
         // GET: VenueServices/Delete/5
         public ActionResult Delete(int id)
         {
-            var vs = _context.VS.Include(c => c.Venues).
+            var vs = _context.VenueServices.Include(c => c.Venues).
                 Include(d => d.SubCategories).SingleOrDefault(c => c.Id == id);
 
             if (vs == null)
@@ -157,8 +157,8 @@ namespace treatwell.Controllers.Admin
             try
             {
                 // TODO: Add delete logic here
-                var vsinDb = _context.VS.Single(c => c.Id == vs.Id);
-                _context.VS.Remove(vsinDb);
+                var vsinDb = _context.VenueServices.Single(c => c.Id == vs.Id);
+                _context.VenueServices.Remove(vsinDb);
                 _context.SaveChanges();
                 return RedirectToAction("Index");
             }

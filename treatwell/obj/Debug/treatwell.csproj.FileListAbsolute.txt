@@ -388,3 +388,8 @@ C:\Users\ZubairHasan\Desktop\tw\treatwell\obj\Debug\treatwell.Migrations.DelUser
 C:\Users\ZubairHasan\Desktop\tw\treatwell\obj\Debug\treatwell.Migrations.AddUserRolesTable.resources
 C:\Users\ZubairHasan\Desktop\tw\treatwell\obj\Debug\treatwell.Migrations.AddUserRolesTable1.resources
 C:\Users\ZubairHasan\Desktop\tw\treatwell\obj\Debug\treatwell.Migrations.AddUserRolesForiegnKeyTable.resources
+C:\Users\ZubairHasan\Desktop\tw\treatwell\obj\Debug\treatwell.Migrations.HasNecessaryDataChanged.resources
+C:\Users\ZubairHasan\Desktop\tw\treatwell\bin\AutoMapper.dll
+C:\Users\ZubairHasan\Desktop\tw\treatwell\bin\AutoMapper.xml
+C:\Users\ZubairHasan\Desktop\tw\treatwell\obj\Debug\treatwell.Migrations.AlterNameVStoVenueServices.resources
+C:\Users\ZubairHasan\Desktop\tw\treatwell\obj\Debug\treatwell.csprojAssemblyReference.cache

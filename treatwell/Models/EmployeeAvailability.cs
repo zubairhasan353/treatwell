@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace treatwell.Models
 {
-    public class EmployeeAvailability
+    public class EmployeeAvailability : BaseClass
     {
         public int Id { get; set; }
 
@@ -24,15 +24,6 @@ namespace treatwell.Models
         [Required]
         [Display(Name = "End time")]
         public string EndTime { get; set; }
-
-        public ApplicationUser ApplicationUserCreatedBy { get; set; }
-        public string ApplicationUserCreatedById { get; set; }
-        public DateTime ApplicationUserCreatedDate { get; set; }
-
-        public ApplicationUser ApplicationUserLastUpdatedBy { get; set; }
-        public string ApplicationUserLastUpdatedById { get; set; }
-        public DateTime ApplicationUserLastUpdatedDate { get; set; }
-
         public ApplicationDbContext db = new ApplicationDbContext();
     }
 }

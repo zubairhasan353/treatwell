@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace treatwell.Models
 {
-    public class BookingDaysTime
+    public class BookingDaysTime : BaseClass
     {
         public int Id { get; set; }
 
@@ -23,13 +23,5 @@ namespace treatwell.Models
         public int VenueServiceId { get; set; }
 
         public int IntervalinMinutes { get; set; }
-
-        public ApplicationUser ApplicationUserCreatedBy { get; set; }
-        public string ApplicationUserCreatedById { get; set; }
-        public DateTime ApplicationUserCreatedDate { get; set; }
-
-        public ApplicationUser ApplicationUserLastUpdatedBy { get; set; }
-        public string ApplicationUserLastUpdatedById { get; set; }
-        public DateTime ApplicationUserLastUpdatedDate { get; set; }
     }
 }

@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace treatwell.Models
 {
-    public class Venues
+    public class Venues : BaseClass
     {
         public int Id { get; set; }
 
@@ -30,13 +30,5 @@ namespace treatwell.Models
 
         [Display(Name = "Image")]
         public string ImagePath { get; set; }
-
-        public ApplicationUser ApplicationUserCreatedBy { get; set; }
-        public string ApplicationUserCreatedById { get; set; }
-        public DateTime ApplicationUserCreatedDate { get; set; }
-
-        public ApplicationUser ApplicationUserLastUpdatedBy { get; set; }
-        public string ApplicationUserLastUpdatedById { get; set; }
-        public DateTime ApplicationUserLastUpdatedDate { get; set; }
     }
 }

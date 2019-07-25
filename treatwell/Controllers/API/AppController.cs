@@ -9,6 +9,8 @@ using System.Net.Http;
 using System.Web.Http;
 using treatwell.Models;
 using treatwell.ViewModels;
+using treatwell.Dtos;
+using AutoMapper;
 
 namespace treatwell.Controllers.API
 {
@@ -20,11 +22,11 @@ namespace treatwell.Controllers.API
             _context = new ApplicationDbContext();
         }
 
-        [System.Web.Http.HttpPost]
-        public IHttpActionResult Checked(int[] serviceId, int[] cityId)
+        [System.Web.Http.HttpGet]
+        public IHttpActionResult GetDetailofServices([FromUri] int[] serviceId, [FromUri] int[] cityId)
         {
             int catId = 0;
-            var viewModel = new InnerPageViewModel();
+            var viewModel = new InnerPageDtoViewModel();
             for (int i = 0; i < serviceId.Length; i++)
             {
                 //var cpredicate = PredicateBuilder.False<Cities>();
@@ -35,50 +37,21 @@ namespace treatwell.Controllers.API
                 catId = subCatTable.CategoryID;
 
                 var subCatDesc = subCatTable.SubCatDesc;
-                var VenueCount = _context.VS.Where(c => c.SubCategoriesId == subCatId).Count();
+                var VenueCount = _context.VenueServices.Where(c => c.SubCategoriesId == subCatId).Count();
 
-                var temp = _context.VS.Include("Venues").Where(c => c.SubCategoriesId == subCatId);
-                for(int j = 0; j < cityId.Length; j++)
-                {
-                    var tmp = cityId[j];
-                    temp = temp.Where(d => d.Venues.CityId == tmp);
-                }
-
-                var venueServices = temp.ToList();
-                var venuesRaw = (from v in _context.venues
-                                 join vs in _context.VS on v.Id equals vs.VenuesId
-                                 where vs.SubCategoriesId == subCatId
-                                 select new
-                                 {
-                                     v.Id,
-                                     v.VenueName
-                                 }).ToList();
-                List<Venues> venues = new List<Venues>();
-                foreach (var obj in venuesRaw)
-                {
-                    Venues venue = new Venues
-                    {
-                        Id = obj.Id,
-                        VenueName = obj.VenueName
-                    };
-                    venues.Add(venue);
-
-                }
-
+                var venues = _context.VenueServices.Include("Venues").Include("Venues.City").Where(v => v.SubCategoriesId == subCatId).Select(Mapper.Map<VenueServices, AppVenueServicesDtos>).ToList();
+                
                 viewModel.Venues.AddRange(venues);
-                viewModel.VenueServices.AddRange(venueServices);
                 viewModel.SubCatDesc = subCatDesc;
                 viewModel.VenueCount = VenueCount;
             }
-            var cityList = _context.Cities.Distinct().ToList();
-            var ProductsList = _context.Products.ToList();
-            var subcat = _context.subCategories.Where(c => c.CategoryID == catId).ToList();
+            var cityList = _context.Cities.Distinct().Select(Mapper.Map<Cities, CitiesDto>).ToList();
+            var subcat = _context.subCategories.Where(c => c.CategoryID == catId).Select(Mapper.Map<SubCategories, SubCategoriesDto>).ToList();
 
             viewModel.SubCategories.AddRange(subcat);
             viewModel.SubCatCount = subcat.Count();
             viewModel.CityCount = _context.Cities.Count();
             viewModel.Cities.AddRange(cityList);
-            viewModel.Products.AddRange(ProductsList);
 
             return Ok(viewModel);
 

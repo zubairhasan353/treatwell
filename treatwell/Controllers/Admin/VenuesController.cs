@@ -98,6 +98,7 @@ namespace treatwell.Controllers.Admin
                     HashedData = ComputeSha256Hash(ImagePath.FileName);
                     FullPath = Path.Combine(Server.MapPath("~/Images"), Path.GetFileName(HashedData)) + "." + extension;
                     ImagePath.SaveAs(FullPath);
+                    FullPath = "~/Images/" + Path.GetFileName(HashedData) + extension;
                     venues.ImagePath = FullPath;
                 }
 

@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace treatwell.Models
 {
-    public class ProdsUsedInSubCat
+    public class ProdsUsedInSubCat : BaseClass
     {
         public int Id { get; set; }
 
@@ -18,13 +18,5 @@ namespace treatwell.Models
 
         [Display(Name = "Quantity Used")]
         public int QtyUsed { get; set; }
-
-        public ApplicationUser ApplicationUserCreatedBy { get; set; }
-        public string ApplicationUserCreatedById { get; set; }
-        public DateTime ApplicationUserCreatedDate { get; set; }
-
-        public ApplicationUser ApplicationUserLastUpdatedBy { get; set; }
-        public string ApplicationUserLastUpdatedById { get; set; }
-        public DateTime ApplicationUserLastUpdatedDate { get; set; }
     }
 }
