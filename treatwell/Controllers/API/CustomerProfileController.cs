@@ -12,6 +12,7 @@ using treatwell.ViewModels;
 using AutoMapper;
 using treatwell.Dtos;
 
+
 namespace treatwell.Controllers.API
 {
     public class CustomerProfileController : ApiController
@@ -27,7 +28,7 @@ namespace treatwell.Controllers.API
         {
             var viewModel = new CustomerProfileViewModel();
 
-            var User = _context.Users.Where(u => u.Id == UserId).Select(Mapper.Map<ApplicationUser, ApplicationUserDto>).ToList();
+            var User = _context.Users.Where(u => u.Id == UserId).Select(Mapper.Map<ApplicationUser, ApplicationUserDto>).FirstOrDefault();
             var CustomerBooking = _context.CustomerBookings.Where(u => u.CustomerId == UserId).Select(Mapper.Map<CustomerBooking, CustomerBookingDto>).ToList();
             //var venues = _context.venues.Include("CustomerBookingDetails").ToList();
 
@@ -54,11 +55,13 @@ namespace treatwell.Controllers.API
                 venues.Add(venue);
             }
 
-            viewModel.User.AddRange(User);
+            viewModel.User = User;
             viewModel.customerBookings.AddRange(CustomerBooking);
             viewModel.venues.AddRange(venues);
 
             return Ok(viewModel);
         }
+
+       
     }
 }

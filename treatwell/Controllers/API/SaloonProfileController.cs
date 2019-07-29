@@ -31,7 +31,7 @@ namespace treatwell.Controllers.API
             }
 
             var viewModel = new SaloonProfileViewModel();
-            var Venues = _context.venues.Include("City").Where(v => v.Id == VenueId).ToList().Select(Mapper.Map<Venues, VenuesDto>);
+            var Venues = _context.venues.Include("City").Where(v => v.Id == VenueId).Select(Mapper.Map<Venues, VenuesDto>).FirstOrDefault();
             var VenueServicesList = _context.VenueServices.Include("SubCategories").Where(vs => vs.VenuesId == VenueId).Select(Mapper.Map<VenueServices, VenueServicesDto>).ToList();
             var employees = _context.UserVenues.Include("User").Where(uv => uv.VenuesId == VenueId).Select(Mapper.Map<UserVenues, UserVenuesDto>).ToList();
 
@@ -61,7 +61,7 @@ namespace treatwell.Controllers.API
             //            where v.Id == VenueId
             //            select c.CityName).FirstOrDefault();
             viewModel.Employees.AddRange(employees);
-            viewModel.Venues.AddRange(Venues);
+            viewModel.Venues = Venues;
             viewModel.venueServices.AddRange(VenueServicesList);
             return Ok(viewModel);
         }

@@ -1,0 +1,20 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+<div ng-app="myapp" ng-controller="app2Controller">
+
+    name :  {{customer.UserName}}
+    @*{{customer.venues}}*@
+    <h3>Venues</h3>
+    <ul ng-repeat="v in customer.venues">
+        <li>{{v.venueName}}</li>
+    </ul>
+</div>
+
+
+<script src="~/Scripts/angular.min.js"></script>
+<script src="~/Scripts/testfolder/customers.js"></script>
