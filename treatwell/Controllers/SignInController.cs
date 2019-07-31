@@ -35,6 +35,11 @@ namespace Angular_MVC.Controllers
             return View();
         }
 
+        public ActionResult ForgotPasswordConfirmation()
+        {
+            return View();
+        }
+
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]

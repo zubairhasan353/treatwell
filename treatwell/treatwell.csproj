@@ -1874,6 +1874,8 @@
     <Content Include="Views\Venues\CreateImages.cshtml" />
     <Content Include="Views\Venues\EditImage.cshtml" />
     <Content Include="Views\Venues\DeleteImage.cshtml" />
+    <Content Include="Views\Shared\_LoginAdminPartial.cshtml" />
+    <Content Include="Views\SignIn\ForgotPasswordConfirmation.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
