@@ -39,6 +39,18 @@ namespace treatwell.App_Start
 
             Mapper.CreateMap<CustomerBooking, CustomerBookingDto>();
             Mapper.CreateMap<CustomerBookingDto, CustomerBooking>().ForMember(dto => dto.Id, options => options.Ignore());
+
+            Mapper.CreateMap<VenueImages, VenueImagesDto>();
+            Mapper.CreateMap<VenueImagesDto, VenueImages>().ForMember(dto => dto.Id, options => options.Ignore());
+
+            Mapper.CreateMap<CustomerReviews, CustomerReviewsDto>();
+            Mapper.CreateMap<CustomerReviewsDto, CustomerReviews>().ForMember(dto => dto.Id, options => options.Ignore());
+
+            Mapper.CreateMap<Days, DaysDto>();
+            Mapper.CreateMap<DaysDto, Days>().ForMember(dto => dto.Id, options => options.Ignore());
+
+            Mapper.CreateMap<BookingDaysTime, BookingDaysTimeDto>();
+            Mapper.CreateMap<BookingDaysTimeDto, BookingDaysTime>().ForMember(dto => dto.Id, options => options.Ignore());
         }
     }
 }

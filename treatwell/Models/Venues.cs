@@ -27,8 +27,5 @@ namespace treatwell.Models
 
         [Display(Name = "Contact No")]
         public string ContactNo { get; set; }
-
-        [Display(Name = "Image")]
-        public string ImagePath { get; set; }
     }
 }

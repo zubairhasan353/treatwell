@@ -217,19 +217,26 @@
     <Compile Include="Controllers\API\EmployeeProfileController.cs" />
     <Compile Include="Controllers\API\SaloonProfileController.cs" />
     <Compile Include="Controllers\AppController.cs" />
+    <Compile Include="Controllers\BusinessProfileController.cs" />
+    <Compile Include="Controllers\CustomerProfileController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\RolesController.cs" />
     <Compile Include="Controllers\SignInController.cs" />
+    <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Controllers\UserRolesController.cs" />
     <Compile Include="Dtos\ApplicationUserDto.cs" />
     <Compile Include="Dtos\AppVenueServicesDtos.cs" />
+    <Compile Include="Dtos\BookingDaysTimeDto.cs" />
     <Compile Include="Dtos\CategoriesDto.cs" />
     <Compile Include="Dtos\CitiesDto.cs" />
     <Compile Include="Dtos\CustomerBookingDetailsDto.cs" />
     <Compile Include="Dtos\CustomerBookingDto.cs" />
+    <Compile Include="Dtos\CustomerReviewsDto.cs" />
+    <Compile Include="Dtos\DaysDto.cs" />
     <Compile Include="Dtos\SubCategoriesDto.cs" />
     <Compile Include="Dtos\UserVenuesDto.cs" />
+    <Compile Include="Dtos\VenueImagesDto.cs" />
     <Compile Include="Dtos\VenuesCustProfDto.cs" />
     <Compile Include="Dtos\VenuesDto.cs" />
     <Compile Include="Dtos\VenueServicesDto.cs" />
@@ -556,6 +563,30 @@
     <Compile Include="Migrations\201907241117484_AlterNameVStoVenueServices.Designer.cs">
       <DependentUpon>201907241117484_AlterNameVStoVenueServices.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201907301213410_CreateVenuesImages.cs" />
+    <Compile Include="Migrations\201907301213410_CreateVenuesImages.Designer.cs">
+      <DependentUpon>201907301213410_CreateVenuesImages.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201907301214555_CreateVenuesImagesTable.cs" />
+    <Compile Include="Migrations\201907301214555_CreateVenuesImagesTable.Designer.cs">
+      <DependentUpon>201907301214555_CreateVenuesImagesTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201907310959001_AlterCustomerReviews.cs" />
+    <Compile Include="Migrations\201907310959001_AlterCustomerReviews.Designer.cs">
+      <DependentUpon>201907310959001_AlterCustomerReviews.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201907311003426_AlterCustomerReviewswithReviewHeading.cs" />
+    <Compile Include="Migrations\201907311003426_AlterCustomerReviewswithReviewHeading.Designer.cs">
+      <DependentUpon>201907311003426_AlterCustomerReviewswithReviewHeading.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201907311004264_AlterCustomerReviewswithReviewHeading1.cs" />
+    <Compile Include="Migrations\201907311004264_AlterCustomerReviewswithReviewHeading1.Designer.cs">
+      <DependentUpon>201907311004264_AlterCustomerReviewswithReviewHeading1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201907311010479_AlterCustomerReviewswithReviewHeading2.cs" />
+    <Compile Include="Migrations\201907311010479_AlterCustomerReviewswithReviewHeading2.Designer.cs">
+      <DependentUpon>201907311010479_AlterCustomerReviewswithReviewHeading2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BaseClass.cs" />
@@ -580,6 +611,7 @@
     <Compile Include="Models\UserRoles.cs" />
     <Compile Include="Models\UserServices.cs" />
     <Compile Include="Models\UserVenues.cs" />
+    <Compile Include="Models\VenueImages.cs" />
     <Compile Include="Models\Venues.cs" />
     <Compile Include="Models\VenueServices.cs" />
     <Compile Include="OfficeEntities.cs" />
@@ -1836,6 +1868,12 @@
     <Content Include="Views\Roles\Delete.cshtml" />
     <Content Include="Views\Roles\ManageUserRoles.cshtml" />
     <Content Include="Views\UserRoles\UserWithRoles.cshtml" />
+    <Content Include="Views\BusinessProfile\Index.cshtml" />
+    <Content Include="Views\CustomerProfile\Index.cshtml" />
+    <Content Include="Views\Test\Index.cshtml" />
+    <Content Include="Views\Venues\CreateImages.cshtml" />
+    <Content Include="Views\Venues\EditImage.cshtml" />
+    <Content Include="Views\Venues\DeleteImage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -2095,6 +2133,24 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201907241117484_AlterNameVStoVenueServices.resx">
       <DependentUpon>201907241117484_AlterNameVStoVenueServices.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907301213410_CreateVenuesImages.resx">
+      <DependentUpon>201907301213410_CreateVenuesImages.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907301214555_CreateVenuesImagesTable.resx">
+      <DependentUpon>201907301214555_CreateVenuesImagesTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907310959001_AlterCustomerReviews.resx">
+      <DependentUpon>201907310959001_AlterCustomerReviews.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907311003426_AlterCustomerReviewswithReviewHeading.resx">
+      <DependentUpon>201907311003426_AlterCustomerReviewswithReviewHeading.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907311004264_AlterCustomerReviewswithReviewHeading1.resx">
+      <DependentUpon>201907311004264_AlterCustomerReviewswithReviewHeading1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907311010479_AlterCustomerReviewswithReviewHeading2.resx">
+      <DependentUpon>201907311010479_AlterCustomerReviewswithReviewHeading2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

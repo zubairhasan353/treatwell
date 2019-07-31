@@ -9,14 +9,18 @@ namespace treatwell.ViewModels
 {
     public class SaloonProfileViewModel
     {
-        public List<VenuesDto> Venues { get; set; }
+        public VenuesDto Venues { get; set; }
+        public List<VenueImagesDto> VenueImages { get; set; }
         public List<VenueServicesDto> venueServices { get; set; }
+        public CustomerReviewsDto CustomerReviews { get; set; }
+        public List<BookingDaysTimeDto> BookingDaysTimes { get; set; }
         public List<UserVenuesDto> Employees { get; set; }
 
         public SaloonProfileViewModel()
         {
-            Venues = new List<VenuesDto>();
+            VenueImages = new List<VenueImagesDto>();
             venueServices = new List<VenueServicesDto>();
+            BookingDaysTimes = new List<BookingDaysTimeDto>();
             Employees = new List<UserVenuesDto>();
         }
     }

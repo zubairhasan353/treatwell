@@ -9,6 +9,7 @@ namespace treatwell.Dtos
     {
         public string Id;
         public string FullName;
+        public string UserName;
         public string Email;
         public string ImagePath;
     }

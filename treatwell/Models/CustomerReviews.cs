@@ -13,12 +13,13 @@ namespace treatwell.Models
         public CustomerBooking CustomerBooking { get; set; }
         public int CustomerBookingId { get; set; }
 
-        public string Experience { get; set; }
+        public decimal Ambience { get; set; }
+        public decimal Staff { get; set; }
+        public decimal Cleanliness { get; set; }
+        public decimal Value { get; set; }
 
-        public int Ambience { get; set; }
-        public int Staff { get; set; }
-        public int Cleanliness { get; set; }
-        public int Value { get; set; }
+        public string ExperienceHeading { get; set; }
+        public string ExperienceRemarks { get; set; }
         public DateTime ReviewDate { get; set; }
     }
 }

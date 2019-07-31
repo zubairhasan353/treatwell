@@ -21,8 +21,9 @@ namespace Angular_MVC.Controllers
         {
             _context = new ApplicationDbContext();
         }
-       
+
         // GET: SignIn
+        [AllowAnonymous]
         public ActionResult Index()
         {
             return View();

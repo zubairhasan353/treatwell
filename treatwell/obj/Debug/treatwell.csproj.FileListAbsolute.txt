@@ -393,3 +393,9 @@ C:\Users\ZubairHasan\Desktop\tw\treatwell\bin\AutoMapper.dll
 C:\Users\ZubairHasan\Desktop\tw\treatwell\bin\AutoMapper.xml
 C:\Users\ZubairHasan\Desktop\tw\treatwell\obj\Debug\treatwell.Migrations.AlterNameVStoVenueServices.resources
 C:\Users\ZubairHasan\Desktop\tw\treatwell\obj\Debug\treatwell.csprojAssemblyReference.cache
+C:\Users\ZubairHasan\Desktop\tw\treatwell\obj\Debug\treatwell.Migrations.CreateVenuesImages.resources
+C:\Users\ZubairHasan\Desktop\tw\treatwell\obj\Debug\treatwell.Migrations.CreateVenuesImagesTable.resources
+C:\Users\ZubairHasan\Desktop\tw\treatwell\obj\Debug\treatwell.Migrations.AlterCustomerReviews.resources
+C:\Users\ZubairHasan\Desktop\tw\treatwell\obj\Debug\treatwell.Migrations.AlterCustomerReviewswithReviewHeading.resources
+C:\Users\ZubairHasan\Desktop\tw\treatwell\obj\Debug\treatwell.Migrations.AlterCustomerReviewswithReviewHeading1.resources
+C:\Users\ZubairHasan\Desktop\tw\treatwell\obj\Debug\treatwell.Migrations.AlterCustomerReviewswithReviewHeading2.resources

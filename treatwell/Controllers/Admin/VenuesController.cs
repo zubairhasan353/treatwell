@@ -76,10 +76,7 @@ namespace treatwell.Controllers.Admin
         [HttpPost]
         public ActionResult Create(Venues venues, HttpPostedFileBase ImagePath)
         {
-            string FullPath;
-            string HashedData;
-
-            try
+           try
             {
                 if (!ModelState.IsValid)
                 {
@@ -88,18 +85,6 @@ namespace treatwell.Controllers.Admin
                         Venues = venues,
                         Cities = _context.Cities.ToList()
                     };
-
-                    //return View(viewModel);
-                }
-
-                if (ImagePath != null)
-                {
-                    string extension = Path.GetExtension(ImagePath.FileName);
-                    HashedData = ComputeSha256Hash(ImagePath.FileName);
-                    FullPath = Path.Combine(Server.MapPath("~/Images"), Path.GetFileName(HashedData)) + "." + extension;
-                    ImagePath.SaveAs(FullPath);
-                    FullPath = "~/Images/" + Path.GetFileName(HashedData) + extension;
-                    venues.ImagePath = FullPath;
                 }
 
                 venues.ApplicationUserCreatedById = "4af95f1c-0f73-4df9-bb6d-166a07b6e5f4";
@@ -109,7 +94,7 @@ namespace treatwell.Controllers.Admin
                 // TODO: Add insert logic here
                 _context.venues.Add(venues);
                 _context.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("CreateImages/" + venues.Id);
             }
             catch
             {
@@ -117,8 +102,100 @@ namespace treatwell.Controllers.Admin
             }
         }
 
-        // GET: Venues/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult CreateImages(int Id)
+        {
+            var imageList = _context.VenueImages.Where(vm => vm.VenuesId == Id).ToList();
+            return View(imageList);
+        }
+
+        [HttpPost]
+        public ActionResult CreateImages(VenueImages vm, int Id, HttpPostedFileBase ImagePath)
+        {
+            string FullPath;
+            string HashedData;
+
+            if (ImagePath != null)
+            {
+                string extension = Path.GetExtension(ImagePath.FileName);
+                HashedData = ComputeSha256Hash(ImagePath.FileName);
+                FullPath = Path.Combine(Server.MapPath("~/Images"), Path.GetFileName(HashedData)) + extension;
+                ImagePath.SaveAs(FullPath);
+                FullPath = "~/Images/" + Path.GetFileName(HashedData) + extension;
+
+                vm.VenuesId = Id;
+                vm.ImagePath = FullPath;
+                vm.ApplicationUserCreatedById = "4af95f1c-0f73-4df9-bb6d-166a07b6e5f4";
+                vm.ApplicationUserCreatedDate = DateTime.Now;
+                vm.ApplicationUserLastUpdatedById = vm.ApplicationUserCreatedById;
+                vm.ApplicationUserLastUpdatedDate = DateTime.Now;
+
+                _context.VenueImages.Add(vm);
+                _context.SaveChanges();
+            }
+
+            return RedirectToAction("CreateImages/" + Id);
+        }
+
+        public ActionResult EditImage(int Id)                                               //Id = ImageId
+        {
+            var venueImage = _context.VenueImages.SingleOrDefault(v => v.Id == Id);
+            return View(venueImage);
+        }
+
+        [HttpPost]
+        public ActionResult EditImage(VenueImages vm, int Id, HttpPostedFileBase ImagePath)         //Id = ImageId
+        {
+            string FullPath;
+            string HashedData;
+            var VenueId = _context.VenueImages.SingleOrDefault(v => v.Id == vm.Id).VenuesId;
+
+            if (ImagePath != null)
+            {
+                string extension = Path.GetExtension(ImagePath.FileName);
+                HashedData = ComputeSha256Hash(ImagePath.FileName);
+                FullPath = Path.Combine(Server.MapPath("~/Images"), Path.GetFileName(HashedData)) + extension;
+                ImagePath.SaveAs(FullPath);
+                FullPath = "~/Images/" + Path.GetFileName(HashedData) + extension;
+
+                vm.ApplicationUserLastUpdatedById = vm.ApplicationUserCreatedById;
+                vm.ApplicationUserLastUpdatedDate = DateTime.Now;
+
+                var imageinDb = _context.VenueImages.Single(v => v.Id == vm.Id);
+                imageinDb.ImagePath = FullPath;
+                _context.SaveChanges();
+            }
+            return RedirectToAction("CreateImages/" + VenueId);
+        }
+
+        public ActionResult DeleteImage(int id)
+        {
+            var venueImage = _context.VenueImages.SingleOrDefault(c => c.Id == id);
+            if (venueImage == null)
+                return HttpNotFound();
+
+            return View(venueImage);
+        }
+
+        // POST: VenuesImages/Delete/5
+        [HttpPost]
+        public ActionResult DeleteImage(int id, VenueImages vm)
+        {
+            try
+            {
+                var venueImage = _context.VenueImages.Single(c => c.Id == vm.Id);
+                var VenueId = _context.VenueImages.SingleOrDefault(v => v.Id == vm.Id).VenuesId;
+                _context.VenueImages.Remove(venueImage);
+                _context.SaveChanges();
+                return RedirectToAction("CreateImages/" + VenueId);
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+    // GET: Venues/Edit/5
+    public ActionResult Edit(int id)
         {
             var venues = _context.venues.SingleOrDefault(c => c.Id == id);
 
@@ -159,10 +236,10 @@ namespace treatwell.Controllers.Admin
                 venueinDb.CityId = venues.CityId;
                 venueinDb.Introduction = venues.Introduction;
                 venueinDb.ContactNo = venues.ContactNo;
-                venueinDb.ImagePath = venues.ImagePath;
+                //venueinDb.ImagePath = venues.ImagePath;
 
                 _context.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("CreateImages/" + id);
             }
             catch
             {
