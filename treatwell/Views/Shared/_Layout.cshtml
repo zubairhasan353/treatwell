@@ -160,7 +160,7 @@
                 </div>
             </div><!-- /.sidebar-shortcuts -->
 
-            <ul class="nav nav-list">
+            <ul class="nav nav-list" style="display:block">
                 <li class="active">
                     <a href="index.html">
                         <i class="menu-icon fa fa-tachometer"></i>
@@ -170,6 +170,10 @@
                     <b class="arrow"></b>
                 </li>
 
+                <li class="form">
+                    &nbsp;&nbsp;&nbsp;<i class="menu-icon fa fa-list-alt"></i>
+                    <span class="menu-text">&nbsp;&nbsp;<b>@Html.ActionLink("Register User", "Register", "Account")</b></span>
+                </li>
                 <li class="">
                     &nbsp;&nbsp;&nbsp;<i class="menu-icon fa fa-list-alt"></i>
                     <span class="menu-text">&nbsp;&nbsp;<b>@Html.ActionLink("Roles", "Index", "Roles")</b></span>
@@ -330,9 +334,9 @@
                     </div><!-- /.page-header -->
 
                     <div class="row">
-                        <div class="col-xs-12">
+                        <div class="col-md-12">
                             <!-- PAGE CONTENT BEGINS -->
-                            <div class="alert alert-block alert-success">
+                            <div class="container">
                                 @RenderBody()
                             </div>
                             <!-- PAGE CONTENT ENDS -->

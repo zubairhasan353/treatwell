@@ -54,15 +54,15 @@ namespace treatwell
             //   consumerKey: "",
             //   consumerSecret: "");
 
-            //app.UseFacebookAuthentication(
-            //   appId: "",
-            //   appSecret: "");
+            app.UseFacebookAuthentication(
+               appId: "421971308526888",
+               appSecret: "cce3824e6d48ba97e5b129ed360313f8");
 
-            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            //{
-            //    ClientId = "",
-            //    ClientSecret = ""
-            //});
+            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            {
+                ClientId = "430036307751-n7754r62b2ku2hd9f162n9ordgkj19bk.apps.googleusercontent.com",
+                ClientSecret = "2cTRUNSKAD8JZUVb63LsN2zX"
+            });
         }
     }
 }

@@ -22,25 +22,25 @@ namespace treatwell
             var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>());
             var userManager = new UserManager<IdentityUser>(new UserStore<IdentityUser>());
 
-            if(!roleManager.RoleExists("SuperAdmin"))
-            {
-                //create super admin role
-                var role = new IdentityRole("SuperAdmin");
-                roleManager.Create(role);
+            //if(!roleManager.RoleExists("SuperAdmin"))
+            //{
+            //    //create super admin role
+            //    var role = new IdentityRole("SuperAdmin");
+            //    roleManager.Create(role);
 
-                //create default user
-                var user = new ApplicationUser();
-                user.UserName = "admin";
-                user.FullName = "Admin";
-                user.Email = "admin@admin.com";
-                string pwd = "Admin123456";
+            //    //create default user
+            //    var user = new ApplicationUser();
+            //    user.UserName = "admin";
+            //    user.FullName = "Admin";
+            //    user.Email = "admin@admin.com";
+            //    string pwd = "Admin123456";
 
-                var newuser = userManager.Create(user, pwd);
-                if(newuser.Succeeded)
-                {
-                    userManager.AddToRole(user.Id, "SuperAdmin");
-                }
-            }
+            //    var newuser = userManager.Create(user, pwd);
+            //    if(newuser.Succeeded)
+            //    {
+            //        userManager.AddToRole(user.Id, "SuperAdmin");
+            //    }
+            //}
         }
     }
 }

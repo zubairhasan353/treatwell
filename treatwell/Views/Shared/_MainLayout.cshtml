@@ -66,10 +66,10 @@
             <div class="col-md-1">
                 <a onclick="@("window.location.href='"+ Url.Action("Index","SignIn") +"'");" class="small" style="color: #ff5c39; text-decoration:unset; font-family:numans">
                     @Html.Partial("_LoginAdminPartial")
-                    </a>
-                </div>
+                </a>
             </div>
         </div>
+    </div>
     <!-- <div class="container-fluid">
         <div class="row">
             <div class="col-sm-12">
@@ -89,10 +89,10 @@
     </div>
     </div> -->
 
-    <div  class="container-fluid small">
+    <div class="container-fluid small">
         <nav style="float:left;width: 100%;" class="navbar navbar-expand-lg navbar-light ">
             <a class="navbar-brand" href="#"> </a>
-           
+
 
             @{
                 Html.RenderAction("SideMenu", "App");
@@ -377,8 +377,6 @@
              this.isCollapsedd = false;
              this.isCollapsede = false;
              this.isCollapsedf = false;
-
-
             }
             else{
             this.isCollapsed = false;
@@ -386,11 +384,10 @@
           }
     </script> -->
 
-
-
-
-
-
     @RenderBody()
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
 </body>
 </html>
