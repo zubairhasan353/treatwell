@@ -6,11 +6,14 @@ using System.Web.Mvc;
 
 namespace treatwell.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
         public ActionResult Index()
         {
             return View();
+            //return View("~/Views/Account/Login.cshtml");
+            //return RedirectToAction("Login", "Account");
         }
 
         public ActionResult About()

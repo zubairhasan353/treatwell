@@ -1,0 +1,52 @@
+﻿@model List<treatwell.Models.VenueImages>
+@{
+    ViewBag.Title = "CreateImages";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Venue Images</h2>
+
+@using (Html.BeginForm("CreateImages", "Venues", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="form-horizontal">
+        <div class="form-group">
+            @Html.LabelFor(m => m[0].ImagePath, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                <input type="file" name="ImagePath" id="ImagePath" />
+                @Html.ValidationMessageFor(model => model[0].ImagePath)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<table class="table">
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                <img src="@Url.Content(item.ImagePath)" width="100px" height="100px" alt="Image" />
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "EditImage", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "DeleteImage", new { id = item.Id })
+            </td>
+        </tr>
+    }
+</table>
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

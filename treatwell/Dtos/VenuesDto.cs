@@ -26,7 +26,5 @@ namespace treatwell.Dtos
         public string Introduction { get; set; }
 
         public string ContactNo { get; set; }
-
-        public string ImagePath { get; set; }
     }
 }

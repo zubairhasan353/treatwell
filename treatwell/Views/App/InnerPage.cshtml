@@ -302,7 +302,7 @@ margin-bottom: 12px;color: #ff5c39; font-size:18px ;font-family: numans">
                 <form>
                     <div *ngFor="let boo of book" class="form-check">
                         <label>
-                            <input type="radio" name="radio" checked> <span class="label-text">For Specific<span style=" float:right; margin-left: 69px; color:gray;">22</span></span>
+                            <input type="radio" name="radio" checked> <span class="label-text">For Specific<span style=" float:right; margin-left: 69px; color:gray;"></span></span>
                         </label>
                     </div>
                     <div class="form-check">
@@ -352,7 +352,7 @@ margin-bottom: 12px;color: #ff5c39; font-size:18px ;font-family: numans">
                         @foreach (var city in Model.Cities)
                         {
                             <label>
-                                <input type="checkbox" id="@city.Id" name="@city.Id" onchange="checkboxClick(this)"> <span class="label-text">@city.CityName<span style=" margin-left: 10px;color:#ff3803;">22</span></span>
+                                <input type="checkbox" id="@city.Id" name="@city.Id" onchange="checkboxClick(this)"> <span class="label-text">@city.CityName<span style=" margin-left: 10px;color:#ff3803;"></span></span>
                             </label>
                             <br />
                         }

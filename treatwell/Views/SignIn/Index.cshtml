@@ -1,4 +1,5 @@
-﻿
+﻿@using treatwell.Models
+@model LoginViewModel
 @{
     ViewBag.Title = "Sign In --- TREATWELL";
     Layout = "~/Views/Shared/_MainLayout.cshtml";
@@ -29,9 +30,9 @@
         align-content: center;
     }
 
-    
-        
-    
+
+
+
 
     .social_icon span {
         font-size: 40px;
@@ -55,40 +56,54 @@
                 <div class="card-header">
                     <h3>SIGN IN</h3>
                     <div class="d-flex justify-content-end social_icon">
-
-                        <span style=" color: #365899;"><i _ngcontent-c2="" aria-hidden="true" class="fa fa-facebook fa-faa-vertical ng" ng-reflect-klass="fa fa-facebook" ng-reflect-ng-class="fa-faa-vertical ng "></i></span>
-                        <span style="color: royalblue;"><i _ngcontent-c2="" aria-hidden="true" class="fa fa-twitter fa-faa-vertical ng" ng-reflect-klass="fa fa-twitter" ng-reflect-ng-class="fa-faa-vertical ng "></i></span>
-                        <span style="border:1px solid antiquewhite; color:tomato"><i _ngcontent-c2="" aria-hidden="true" class="fa fa-google fa-faa-vertical ng" ng-reflect-klass="fa fa-google" ng-reflect-ng-class="fa-faa-vertical ng "></i></span>
+                        <div class="col-md-4">
+                            <section id="socialLoginForm">
+                                @Html.Partial("~/Views/Account/_ExternalLoginsListPartial.cshtml", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
+                            </section>
+                        </div>
+                        @*<span style="color: royalblue;"><i _ngcontent-c2="" aria-hidden="true" class="fa fa-twitter fa-faa-vertical ng" ng-reflect-klass="fa fa-twitter" ng-reflect-ng-class="fa-faa-vertical ng "></i></span>
+                        <span style="border:1px solid antiquewhite; color:tomato"><i _ngcontent-c2="" aria-hidden="true" class="fa fa-google fa-faa-vertical ng" ng-reflect-klass="fa fa-google" ng-reflect-ng-class="fa-faa-vertical ng "></i></span>*@
                     </div>
                 </div>
 
+                @using (Html.BeginForm("Login", "Account", new { ReturnUrl = "/" }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <div style="padding-bottom: 0px !important;padding-top: 37px;" class="card-body">
+                        <form>
+                            <div class="input-group form-group">
+                                <div class="input-group-prepend">
+                                    <span style="padding-right:17px" class="input-group-text"><i _ngcontent-c2="" aria-hidden="true" class="fa fa-user fa-faa-vertical ng" ng-reflect-klass="fa fa-user" ng-reflect-ng-class="fa-faa-vertical ng "></i></span>
+                                </div>
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                @*<input type="text" class="form-control" placeholder="username">*@
+                                @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "username" })
+                                @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
 
-                <div style="padding-bottom: 0px !important;padding-top: 37px;" class="card-body">
-                    <form>
-                        <div class="input-group form-group">
-                            <div class="input-group-prepend">
-                                <span style="padding-right:17px" class="input-group-text"><i _ngcontent-c2="" aria-hidden="true" class="fa fa-user fa-faa-vertical ng" ng-reflect-klass="fa fa-user" ng-reflect-ng-class="fa-faa-vertical ng "></i></span>
                             </div>
-                            <input type="text" class="form-control" placeholder="username">
+                            <div class="input-group form-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i _ngcontent-c2="" aria-hidden="true" class="fa fa-key fa-faa-vertical ng" ng-reflect-klass="fa fa-key" ng-reflect-ng-class="fa-faa-vertical ng "></i></span>
+                                </div>
+                                @*<input type="password" class="form-control" placeholder="password">*@
+                                @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "password" })
+                                @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="row align-items-center remember">
+                                @*<input type="checkbox" style="margin-left:15px"><span style="margin-left:15px"></span>Remember Me*@
+                                <span style="margin-left:15px">@Html.CheckBoxFor(m => m.RememberMe)</span>
+                                <span style="margin-left:15px">@Html.LabelFor(m => m.RememberMe)</span>
+                            </div>
+                            <div class="form-group">
+                                <input style="margin-top:20px; margin-right: 9px; max-width: 100% !important;" type="submit" value="Login" class="btn btn-dark btn-lg btn-block">
+                            </div>
+                        </form>
+                    </div>
+                }
 
-                        </div>
-                        <div class="input-group form-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text"><i _ngcontent-c2="" aria-hidden="true" class="fa fa-key fa-faa-vertical ng" ng-reflect-klass="fa fa-key" ng-reflect-ng-class="fa-faa-vertical ng "></i></span>
-                            </div>
-                            <input type="password" class="form-control" placeholder="password">
-                        </div>
-                        <div class="row align-items-center remember">
-                            <input type="checkbox" style="margin-left:15px"><span style="margin-left:15px"></span>Remember Me
-                        </div>
-                        <div class="form-group">
-                            <input style="margin-top:20px; margin-right: 9px; max-width: 100% !important;" type="button" value="Login" class="btn btn-dark btn-lg btn-block">
-                        </div>
-                    </form>
-                </div>
                 <div class="card-footer">
                     <div class="d-flex justify-content-center links ">
-                        Don't have an account? <a onclick="@("window.location.href='"+ Url.Action("SignUp","SignIn") +"'");" style="margin-left:5px; color:tomato ;">Sign Up</a>
+                        Don't have an account? <a onclick="@("window.location.href='" + Url.Action("SignUp", "SignIn") + "'");" style="margin-left:5px; color:tomato ;">Sign Up</a>
                     </div>
                     <div class="d-flex justify-content-center">
                         <a onclick="@("window.location.href='"+ Url.Action("ForgetUrPassword","SignIn") +"'");" style="color:tomato">Forgot your password?</a>

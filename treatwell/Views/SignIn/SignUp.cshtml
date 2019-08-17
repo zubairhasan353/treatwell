@@ -1,4 +1,4 @@
-﻿
+﻿@model treatwell.Models.RegisterViewModel
 @{
     ViewBag.Title = "SignUp --- TREATWELL";
     Layout = "~/Views/Shared/_MainLayout.cshtml";
@@ -45,8 +45,9 @@
     }
 </style>
 
-@using (Html.BeginForm("SignUp", "SignIn", FormMethod.Post, new { enctype = "multipart/form-data" }))
+@using (Html.BeginForm("Register2", "Account", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
+    @Html.AntiForgeryToken()
     <div class="container">
         <div class="d-flex justify-content-center h-100">
             <div class="card">
@@ -64,41 +65,34 @@
                             <div class="input-group-prepend">
                                 <span style="padding-right:17px" class="input-group-text"><i _ngcontent-c2="" aria-hidden="true" class="fa fa-user fa-faa-vertical ng" ng-reflect-klass="fa fa-user" ng-reflect-ng-class="fa-faa-vertical ng "></i></span>
                             </div>
-                            <input style="margin-right:6px" type="text" class="form-control" placeholder="First Name">
-                            <input type="text" class="form-control" placeholder="Last Name">
-
+                            @Html.TextBoxFor(m => m.FullName, new { @class = "form-control", @style = "margin-right:6px", @placeholder = "Full Name" })
                         </div>
 
                         <div class="input-group form-group">
                             <div class="input-group-prepend">
                                 <span style="padding-right:17px" class="input-group-text"><i _ngcontent-c2="" aria-hidden="true" class="fa fa-user fa-faa-vertical ng" ng-reflect-klass="fa fa-user" ng-reflect-ng-class="fa-faa-vertical ng "></i></span>
                             </div>
-                            <input type="text" class="form-control" placeholder="Email">
-
+                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @placeholder = "Email" })
                         </div>
                         <div class="input-group form-group">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i _ngcontent-c2="" aria-hidden="true" class="fa fa-key fa-faa-vertical ng" ng-reflect-klass="fa fa-key" ng-reflect-ng-class="fa-faa-vertical ng "></i></span>
                             </div>
-                            <input type="password" class="form-control" placeholder="password">
-
+                            @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "password" })
                         </div>
 
                         <div class="input-group form-group">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i _ngcontent-c2="" aria-hidden="true" class="fa fa-key fa-faa-vertical ng" ng-reflect-klass="fa fa-key" ng-reflect-ng-class="fa-faa-vertical ng "></i></span>
                             </div>
-                            <input type="password" class="form-control" placeholder="Type password again">
-
+                            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", @placeholder = "Type password again" })
                         </div>
 
                         <div>
-                            <input style="margin-top: 0px; margin-right: 36px;" type="button" value="Sign Up" class="btn btn-dark btn-lg btn-block float-right">
+                            <input style="margin-top: 0px; margin-right: 36px;" type="submit" value="Sign Up" class="btn btn-dark btn-lg btn-block float-right">
                         </div>
                     </form>
                 </div>
-
-
             </div>
         </div>
     </div>
