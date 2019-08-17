@@ -26,7 +26,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
-    <TypeScriptToolsVersion>3.2</TypeScriptToolsVersion>
+    <TypeScriptToolsVersion>3.3</TypeScriptToolsVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -217,10 +217,14 @@
     <Compile Include="Controllers\API\EmployeeProfileController.cs" />
     <Compile Include="Controllers\API\SaloonProfileController.cs" />
     <Compile Include="Controllers\AppController.cs" />
+    <Compile Include="Controllers\BusinessProfileController.cs" />
+    <Compile Include="Controllers\CustomerProfileController.cs" />
+    <Compile Include="Controllers\EmployeeProfileController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\RolesController.cs" />
     <Compile Include="Controllers\SignInController.cs" />
+    <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Controllers\UserRolesController.cs" />
     <Compile Include="Dtos\ApplicationUserDto.cs" />
     <Compile Include="Dtos\AppVenueServicesDtos.cs" />
@@ -737,7 +741,7 @@
     <Content Include="assets\swf\flashExport.swf" />
     <Content Include="CientApp\app\app-routing.module.js" />
     <Content Include="CientApp\app\app.component.html" />
-    <Content Include="CientApp\app\app.component.js" />
+    <Content Include="CientApp\app\app-component.js" />
     <Content Include="CientApp\app\app.module.js" />
     <Content Include="CientApp\app\assets\image\app.PNG" />
     <Content Include="CientApp\app\assets\image\Egg Yolk Digging.jpg" />
@@ -828,6 +832,9 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Images\6c68d2e42a8e5a9801a5a61142ed3618eea879d88d86628e9f0b988fea04f089.jpg" />
+    <Content Include="Images\line2.PNG" />
+    <Content Include="Images\map.PNG" />
+    <Content Include="Images\line.png" />
     <Content Include="Scripts\ace-editable.min.js" />
     <Content Include="Scripts\ace-elements.min.js" />
     <Content Include="Scripts\ace-extra.min.js" />
@@ -858,6 +865,8 @@
     <Content Include="Scripts\angular-touch.min.js" />
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\angular.min.js" />
+    <Content Include="Scripts\AngularFiles\businessprofile.js" />
+    <Content Include="Scripts\AngularFiles\employeeprofile.js" />
     <Content Include="Scripts\autosize.min.js" />
     <Content Include="Scripts\bootbox.js" />
     <Content Include="Scripts\bootstrap-colorpicker.min.js" />
@@ -880,6 +889,7 @@
     <Content Include="assets\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="assets\fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="Scripts\angular.min.js.map" />
+    <Content Include="Scripts\AngularFiles\customerprofile.js" />
     <Content Include="Scripts\errors.json" />
     <Content Include="Scripts\angular-touch.min.js.map" />
     <Content Include="Scripts\angular-sanitize.min.js.map" />
@@ -1728,6 +1738,7 @@
     <Content Include="Scripts\test-bundles\angular-route.js" />
     <Content Include="Scripts\test-bundles\angular-sanitize.js" />
     <Content Include="Scripts\test-bundles\angular-touch.js" />
+    <Content Include="Scripts\testfolder\customers.js" />
     <Content Include="Scripts\tree.min.js" />
     <Content Include="Scripts\wizard.min.js" />
     <Content Include="Web.config">
@@ -1836,6 +1847,10 @@
     <Content Include="Views\Roles\Delete.cshtml" />
     <Content Include="Views\Roles\ManageUserRoles.cshtml" />
     <Content Include="Views\UserRoles\UserWithRoles.cshtml" />
+    <Content Include="Views\Test\Index.cshtml" />
+    <Content Include="Views\CustomerProfile\Index.cshtml" />
+    <Content Include="Views\BusinessProfile\Index.cshtml" />
+    <Content Include="Views\EmployeeProfile\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
