@@ -11,10 +11,11 @@ app.controller('app2Controller', function ($scope, catService) {
     $scope.customer = '';
     getUsers();
     function getUsers() {
+        
         promiseGet = catService.getCategories();
         promiseGet.then(function (p1) {
             $scope.customer = p1.data;
         });
-
+        
     }
 });

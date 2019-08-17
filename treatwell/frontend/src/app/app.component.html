@@ -1,0 +1,39 @@
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css" integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+<!--<input name='location' [(ngModel)]='location'>
+<button (click)='getWeatherByLocation()'>Click Me</button>-->
+<pre>{{customer | json}}</pre>
+
+<div class="table-responsive">
+  <table id="leave_inbox_table" class="table table-bordered table-striped">
+    <thead class="black white-text">
+      <tr class="skn-bg-color">
+
+        <th>id</th>
+        <th> Name</th>
+        <th>Email</th>
+
+
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor=" let cust of Customer ">
+        <th scope="row">{{cust.id}}</th>
+        <th>{{cust.fullname}}</th>
+        <th>{{cust.email}} </th>
+      </tr>
+
+    </tbody>
+  </table>
+</div>
+<br />
+
+<!--<app-pic></app-pic>
+<app-city></app-city>-->

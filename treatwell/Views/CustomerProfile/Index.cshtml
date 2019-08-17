@@ -1,26 +1,110 @@
 ﻿
 @{
     ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
 }
 
-<h2>Index</h2>
-<div ng-app="myapp" >
-    <div ng-controller="app2Controller">
-        name :  {{customer.UserName}}
+
+<html lang="en">
+
+<body style="font-size:14px">
+    <div style="background-color:#f2f2f2; width:70%; height: 5.42857em ; position: absolute; margin-left: 10%;
+
+
+
+" class="container-fluid">
+        <div style="
+    margin-top: .85714em;
+    margin-bottom: .92857em;
+   list-style: none;">
+
+
+            <ul style="margin-left: 24.71429em;
+    display: inline-block;
+    margin-top: 11px;">
+                <li style="border-color: #d6cf8d;display: inline-block;
+    font-size: 1.14286em;
+    padding-bottom: .33333em;
+    border-bottom: 2px solid transparent;
+    color: #666;">
+                    <a style="display: inline-block;
+    font-size: 1.14286em;
+    padding-bottom: .33333em;
+    border-bottom: 2px solid transparent;
+    color: #666;display: inline-block;
+    margin-right: 1.71429em;border-color: #d6cf8d;font-size:1.2vw !important;" href="#bookings">Bookings</a>
+                </li>
+
+                <li style="display: inline-block;
+    font-size: 1.14286em;
+    padding-bottom: .33333em;
+    border-bottom: 2px solid transparent;
+    color: #666;" data-tracking-event="" data-tracking-category="">
+                    <a style="display: inline-block;
+    font-size: 1.14286em;
+    padding-bottom: .33333em;
+    border-bottom: 2px solid transparent;
+    color: #666;border-color: #d6cf8d;font-size:1.2vw !important; " href="#wallet">Wallet</a>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+
+
+    <div class="container" style="    margin-top: 2%;
+    margin-left: 12%;">
+
+        <div class="card" style="width:300px ;box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);">
+            <img style="padding:9%" class="card-img-top" src="https://cdn1.treatwell.net/images/view/v2.i584831.w264.h264.xDAB4DCE2/" alt="Card image" style="width:100%">
+            <div class="card-body">
+                <div ng-app="myapp">
+                    <div ng-controller="app2Controller">
+                        <h2 class="card-title"> {{customer.UserName}}</h2>
+                        <p class="card-text">Male</p>
+                        <a href="#" class="btn btn-secondary btn-lg" style="
+    width: 98%;">Edit My Profile</a>
+                        <hr />
+                        <span style="font-size: .78571em;
+    width: 100%;
+    color: #646463;
+    margin-bottom: .45455em;
+    float: left;
+    line-height: 2em;
+    margin: 0.45455em 0;
+    letter-spacing: 0.1em;">Login Info</span>
+
+                        <strong data-hj-suppress="">usamaajadun@gmail.com</strong>
+                     
+
+                        <a class="change-password-link link-with-icon" href="/request-password" target="_blank" style="text-decoration:none;     line-height: 1.5em;
+    color: #ff5c39;
+    cursor: pointer;
+    display: block;
+    margin-top: .14286em;">
+                            Reset password
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        @*<h2>Index</h2>*@
+        @*<div ng-app="myapp">*@
+        @*<div ng-controller="app2Controller">*@
+        @*name :  {{customer.user.fullName}}*@
         @*{{customer.venues}}*@
-        <h3>Venues</h3>
-        @*<ul ng-repeat="v in customer.venues">
-            <li>{{v.venueName}}</li>
-        </ul>*@
-    </div>
-    <div ng-controller="app3Controller">
+        @*<h3>Venues</h3>
+        <ul ng-repeat="v in customer.venues">
+                <li>{{v.venueName}}</li>
+            </ul>
+       </div>*@
 
 
-    </div>
-    
-</div>
 
-
+</body>
+</html>
 <script src="~/Scripts/angular.min.js"></script>
 <script src="~/Scripts/AngularFiles/customerprofile.js"></script>
