@@ -53,13 +53,62 @@ namespace treatwell.Controllers.API
             List<CustomerReviewsDto> customerReviews = new List<CustomerReviewsDto>();
             foreach (var obj in CustomerReviewsRaw)
             {
+                double reviewSecond = DateTime.Today.Subtract(obj.ReviewDate).TotalSeconds;
+                string TimeinDaysorMins;
+                if (reviewSecond < 60)
+                {
+                    TimeinDaysorMins = "Seconds";
+                }
+                else if(reviewSecond < 3600)
+                {
+                    reviewSecond = Math.Round(reviewSecond / 60);
+                    TimeinDaysorMins = "Minutes";
+                }
+                else
+                {
+                    reviewSecond = Math.Round(reviewSecond / 3600);
+                    if(reviewSecond < 24)
+                    {
+                        TimeinDaysorMins = "Hours";
+                    }
+                    else
+                    {
+                        reviewSecond = Math.Round(reviewSecond / 24);
+                        if(reviewSecond < 30)
+                        {
+                            TimeinDaysorMins = "Days";
+                        }
+                        else
+                        {
+                            reviewSecond = Math.Round(reviewSecond / 30);
+                            if (reviewSecond < 12)
+                            {
+                                TimeinDaysorMins = "Months";
+                            }
+                            else
+                            {
+                                reviewSecond = Math.Round(reviewSecond / 12);
+                                if (reviewSecond == 1)
+                                {
+                                    TimeinDaysorMins = "Year";
+                                }
+                                else
+                                {
+                                    TimeinDaysorMins = "Years";
+                                }
+                            }
+                        }
+                    }
+                }
+
                 CustomerReviewsDto CR = new CustomerReviewsDto
                 {
                     ExperienceHeading = obj.ExperienceHeading,
                     ExperienceRemarks = obj.ExperienceRemarks,
                     Total = obj.Total,
                     ReviewDate = obj.ReviewDate,
-                    ReviewedSeconds = DateTime.Today.Subtract(obj.ReviewDate).TotalSeconds,
+                    ReviewedSeconds = reviewSecond,
+                    TimeinDaysorMins = TimeinDaysorMins,
                     Id = obj.Id
                 };
                 customerReviews.Add(CR);
